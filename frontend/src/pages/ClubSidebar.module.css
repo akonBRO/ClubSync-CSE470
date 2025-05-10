@@ -1,0 +1,190 @@
+/* src/components/ClubSidebar.module.css */
+/* Styles without :root CSS variables */
+
+.sidebar {
+   
+    background: linear-gradient(180deg, #2E3A8C 0%, #1C2358 100%); /* --sidebar-bg */
+    color: #E0E7FF; /* --sidebar-text-color */
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif; /* --font-family */
+    transition: width 0.3s ease;
+    box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sidebarHeader {
+    display: flex;
+    align-items: center;
+    padding: 10px 5px;
+    margin-bottom: 35px;
+}
+
+.sidebarLogoIcon {
+    font-size: 2.2rem;
+    color: #A5B4FC; /* --sidebar-icon-color (used for logo icon too) */
+    margin-right: 12px;
+    transition: transform 0.3s ease;
+}
+.sidebarHeader:hover .sidebarLogoIcon {
+    transform: rotate(15deg);
+}
+
+.sidebarLogoText {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #FFFFFF; /* --sidebar-text-hover-focus-color */
+    letter-spacing: 0.5px;
+}
+
+.sidebarNav {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Custom scrollbar for webkit browsers */
+.sidebarNav::-webkit-scrollbar {
+    width: 6px;
+}
+.sidebarNav::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+.sidebarNav::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+
+.navSectionTitle {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #A5B4FC; /* --sidebar-icon-color */
+    padding: 10px 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+.navSectionTitle:first-of-type {
+    margin-top: 0;
+}
+
+
+.sidebarNavItem {
+    display: flex;
+    align-items: center;
+    padding: 14px 18px;
+    border-radius: 8px; /* --border-radius-md */
+    text-decoration: none;
+    color: #E0E7FF; /* --sidebar-text-color */
+    margin-bottom: 8px;
+    transition: background-color 0.25s ease, color 0.25s ease, padding-left 0.25s ease;
+    font-weight: 500;
+}
+
+.navItemIcon {
+    font-size: 1.2rem;
+    margin-right: 18px;
+    color: #A5B4FC; /* --sidebar-icon-color */
+    transition: color 0.25s ease;
+    width: 24px;
+    text-align: center;
+}
+
+.navItemLabel {
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+
+.sidebarNavItem:hover {
+    background-color: rgba(55, 81, 255, 0.1); /* --primary-light-transparent */
+    color: #FFFFFF; /* --sidebar-text-hover-focus-color */
+    padding-left: 22px;
+}
+.sidebarNavItem:hover .navItemIcon {
+    color: #FFFFFF; /* --sidebar-text-hover-focus-color */
+}
+
+.sidebarNavItemActive {
+    background-color: #3751FF; /* --sidebar-active-bg */
+    color: #FFFFFF !important; /* --sidebar-text-hover-focus-color */
+    font-weight: 600;
+    box-shadow: 0 2px 10px rgba(55, 81, 255, 0.3);
+}
+
+.sidebarNavItemActive .navItemIcon {
+    color: #FFFFFF !important; /* --sidebar-active-icon-color */
+}
+
+.sidebarFooter {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebarSupportCard {
+    background: rgba(255, 255, 255, 0.05); /* --support-card-bg */
+    padding: 20px;
+    border-radius: 8px; /* --border-radius-md */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.supportIcon {
+    font-size: 2rem;
+    color: #3751FF; /* --primary-color */
+    margin-bottom: 12px;
+}
+
+.supportText {
+    font-size: 0.85rem;
+    color: #E0E7FF; /* --sidebar-text-color */
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.supportButton {
+    background-color: #3751FF; /* --support-button-bg */
+    color: #FFFFFF; /* --support-button-text */
+    border: none;
+    border-radius: 8px; /* --border-radius-md */
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    width: 100%;
+}
+
+.supportButton:hover {
+    background-color: #2a41d5; /* --primary-hover-color */
+    transform: translateY(-2px);
+}
+
+.logoutButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 8px; /* --border-radius-md */
+    background-color: #D32F2F; /* --logout-bg */
+    color: #FFFFFF; /* --sidebar-text-hover-focus-color */
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    font-size: 0.95rem;
+}
+
+.logoutIcon {
+    font-size: 1.2rem;
+    margin-right: 12px;
+}
+
+.logoutButton:hover {
+    background-color: #B71C1C; /* --logout-hover-bg */
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
