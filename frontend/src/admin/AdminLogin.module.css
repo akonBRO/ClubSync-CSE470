@@ -1,0 +1,111 @@
+.adminLoginBody {
+    background-color: #f0f2f5;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.adminLoginContainer {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+}
+
+.adminLoginContainer__img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.adminLoginContainer__h2 {
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 24px;
+}
+
+.adminLoginContainer__inputGroup {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.adminLoginContainer__inputGroup__input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    background: none;
+    font-size: 16px;
+}
+
+.adminLoginContainer__inputGroup__label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: white;
+    padding: 0 5px;
+    color: #888;
+    font-size: 14px;
+    pointer-events: none;
+    transition: 0.2s ease all;
+}
+
+.adminLoginContainer__inputGroup__input:focus + .adminLoginContainer__inputGroup__label,
+.adminLoginContainer__inputGroup__input:not(:placeholder-shown) + .adminLoginContainer__inputGroup__label {
+    top: -10px;
+    left: 10px;
+    color: #007bff;
+    font-size: 12px;
+}
+
+.adminLoginContainer__options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.adminLoginContainer__options__a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.adminLoginContainer__options__a:hover {
+    text-decoration: underline;
+}
+
+.adminLoginContainer__button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.adminLoginContainer__button:hover {
+    background-color: #0056b3;
+}
+
+.adminLoginContainer__register {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.adminLoginContainer__register__a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.adminLoginContainer__register__a:hover {
+    text-decoration: underline;
+}
