@@ -1,0 +1,474 @@
+/* Add Google Fonts link for Poppins if not already in index.html */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/* --- CSS Variables for easy color management (defined locally in the module) --- */
+.loginPageWrapper {
+  --cprimary-color: #4a00e0; /* Deep Purple */
+  --csecondary-color: #8e2de2; /* Lighter Purple */
+  --caccent-color: #00c6ff; /* Bright Blue */
+  --white: #fff;
+  --dark-text: #333;
+  --light-grey: #f4f7f6; /* Slightly different light grey */
+  --error-red: #e74c3c;
+  --error-bg: #fdeded;
+  --gradient-bg: linear-gradient(135deg, var(--cprimary-color) 0%, var(--csecondary-color) 100%);
+}
+
+
+.loginPageWrapper {
+  margin: 0;
+  padding: 20px; /* Add some padding around content */
+  font-family: 'Poppins', sans-serif; /* Use Poppins */
+  background: var(--gradient-bg); /* Use the gradient background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden; /* Hide overflow from background shapes */
+  position: relative; /* Needed for absolute positioning of shapes */
+}
+
+/* Background Thematic Elements */
+.backgroundElement {
+    position: absolute;
+    opacity: 0.12; /* Subtle opacity */
+    pointer-events: none; /* Ensure clicks go through */
+    filter: blur(40px); /* Add blur for a softer look */
+    animation-name: floatShape; /* Apply animation */
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate; /* Animate back and forth */
+}
+
+/* Define individual element styles */
+.elementCircle1 {
+    width: 100px; height: 100px;
+    border-radius: 50%; /* Circle */
+    background: var(--caccent-color);
+    top: 5%; left: 10%;
+    animation-duration: 18s;
+    animation-delay: 0s;
+}
+
+.elementSquare2 {
+    width: 120px; height: 120px;
+    background: var(--white);
+    top: 20%; right: 15%;
+    animation-duration: 22s;
+    animation-delay: 3s;
+    transform: rotate(15deg); /* Initial rotation */
+}
+
+.elementCircle3 {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: var(--csecondary-color);
+    bottom: 10%; left: 20%;
+    animation-duration: 15s;
+    animation-delay: 6s;
+}
+
+.elementSquare4 {
+    width: 90px; height: 90px;
+    background: var(--cprimary-color);
+    top: 40%; right: 5%;
+    animation-duration: 19s;
+    animation-delay: 1s;
+     transform: rotate(-10deg); /* Initial rotation */
+}
+
+.elementCircle5 {
+    width: 150px; height: 150px;
+    border-radius: 50%;
+    background: var(--white);
+    bottom: 5%; right: 8%;
+    animation-duration: 25s;
+    animation-delay: 9s;
+}
+
+.elementSquare6 {
+    width: 70px; height: 70px;
+    background: var(--caccent-color);
+    top: 30%; left: 5%;
+    animation-duration: 16s;
+    animation-delay: 4s;
+     transform: rotate(20deg); /* Initial rotation */
+}
+.elementCircle7 {
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    background: var(--cprimary-color);
+    bottom: 30%; left: 15%;
+    animation-duration: 20s;
+    animation-delay: 7s;
+}
+
+
+@keyframes floatShape {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(30px, -40px) rotate(10deg); } /* More movement */
+    100% { transform: translate(0, 0) rotate(0deg); } /* Return to original */
+}
+
+
+.clubLoginContainer {
+  background: var(--white);
+  padding: 50px 40px; /* More padding */
+  border-radius: 20px; /* More rounded corners */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25); /* Stronger, softer shadow */
+  text-align: center;
+  width: 100%;
+  max-width: 450px; /* Slightly wider container */
+  position: relative; /* Needed for z-index */
+  z-index: 10; /* Bring container above background shapes */
+  overflow: hidden; /* Prevent internal elements from overflowing rounded corners */
+  transition: transform 0.3s ease-in-out; /* Add hover effect */
+}
+
+.clubLoginContainer:hover {
+    transform: translateY(-5px); /* Subtle lift on hover */
+}
+
+.logoArea {
+    margin-bottom: 30px; /* More space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* If using an image logo */
+    /* .clubLoginContainer__img {
+        width: 80px;
+        height: auto;
+        margin-bottom: 15px;
+    } */
+}
+
+.lockIcon {
+    color: var(--cprimary-color); /* Style the icon */
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15)); /* Stronger subtle shadow */
+    transition: transform 0.3s ease-in-out; /* Add hover effect */
+}
+
+.logoArea:hover .lockIcon {
+    transform: scale(1.1); /* Scale icon on logo area hover */
+}
+
+
+.clubLoginTitle {
+  margin-bottom: 40px; /* More space below title */
+  font-size: 2.4em; /* Slightly larger title */
+  color: var(--dark-text);
+  font-weight: 700;
+  position: relative;
+}
+
+.clubLoginTitle::after {
+    content: '';
+    position: absolute;
+    bottom: -15px; /* Position the underline */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px; /* Underline width */
+    height: 4px; /* Underline thickness */
+    background: var(--caccent-color); /* Accent color underline */
+    border-radius: 2px;
+}
+
+
+.errorMessage {
+    color: var(--error-red); /* Red color for errors */
+    background-color: var(--error-bg); /* Light red background */
+    border: 1px solid var(--error-red);
+    padding: 12px 20px; /* More padding */
+    border-radius: 8px; /* More rounded */
+    margin-bottom: 25px; /* More space below error */
+    font-size: 0.95em;
+    text-align: left;
+    opacity: 0; /* Start hidden */
+    animation: fadeIn 0.5s ease-in-out forwards; /* Fade in animation */
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+
+.inputGroup {
+  position: relative;
+  margin-bottom: 30px; /* Adjusted margin */
+  display: flex; /* Use flexbox for icon and input */
+  align-items: center;
+}
+
+.inputIcon {
+    position: absolute;
+    left: 15px; /* Position the icon inside */
+    color: #aaa; /* Default icon color */
+    transition: color 0.3s ease;
+    z-index: 2; /* Ensure icon is above input */
+}
+
+
+.inputField {
+  width: 100%;
+  padding: 15px 20px 15px 45px; /* More padding, adjusted left for icon */
+  font-size: 1.1em; /* Slightly larger font */
+  border: 1px solid #ddd; /* Lighter border */
+  border-radius: 10px; /* More rounded input */
+  outline: none;
+  background: var(--light-grey); /* Light grey background */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Added background transition */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.inputField:focus {
+  border-color: var(--caccent-color); /* Highlight with accent color on focus */
+  box-shadow: 0 0 10px rgba(0, 198, 255, 0.3); /* Stronger subtle glow effect */
+  background-color: var(--white); /* White background on focus */
+}
+
+/* Style for the floating label */
+.inputLabel {
+  position: absolute;
+  top: 16px; /* Adjust based on padding */
+  left: 45px; /* Adjust based on padding and icon width */
+  font-size: 1.1em; /* Match input font size initially */
+  color: #aaa;
+  pointer-events: none;
+  transition: 0.3s ease; /* Smooth transition */
+  background-color: var(--light-grey); /* Match input background */
+  padding: 0 5px; /* Padding to hide border when label moves */
+  z-index: 1; /* Ensure label is above input border */
+}
+
+/* Move label up when input is focused or has content */
+.inputField:focus + .inputLabel,
+.inputField:not(:placeholder-shown) + .inputLabel {
+  top: -10px; /* Move above the input field */
+  left: 40px; /* Adjusted left position */
+  font-size: 0.9em; /* Smaller font when moved */
+  color: var(--cprimary-color); /* Change color */
+  z-index: 3; /* Ensure label is above everything else in input group */
+  background-color: var(--white); /* Match focus background */
+}
+
+/* Change icon color on input focus */
+.inputField:focus ~ .inputIcon {
+    color: var(--cprimary-color);
+}
+
+
+.formOptions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px; /* More space below options */
+  font-size: 0.95em;
+  color: #555;
+}
+
+.rememberMe {
+    display: flex;
+    align-items: center;
+    cursor: pointer; /* Indicate interactive */
+}
+
+.rememberMeCheckbox {
+  margin-right: 8px; /* Space between checkbox and text */
+  accent-color: var(--cprimary-color); /* Style checkbox */
+  width: 16px; /* Size the checkbox */
+  height: 16px;
+  cursor: pointer;
+}
+
+
+.forgotPasswordLink {
+  text-decoration: none;
+  color: var(--cprimary-color);
+  transition: color 0.3s ease;
+  font-weight: 500; /* Semi-bold */
+}
+
+.forgotPasswordLink:hover {
+  color: var(--caccent-color); /* Accent color on hover */
+  text-decoration: underline;
+}
+
+.loginButton {
+  width: 100%;
+  padding: 16px 20px; /* More padding */
+  font-size: 1.3em; /* Larger font */
+  background: var(--gradient-bg); /* Use gradient background for button */
+  color: var(--white);
+  border: none;
+  border-radius: 10px; /* More rounded corners */
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Added transitions */
+  font-weight: 600;
+  letter-spacing: 0.8px; /* More spacing */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Stronger subtle shadow */
+  text-transform: uppercase; /* Uppercase text */
+}
+
+.loginButton:hover {
+  opacity: 0.95; /* Slight opacity change */
+  transform: translateY(-3px); /* Subtle lift effect */
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25); /* Stronger shadow on hover */
+}
+
+.registerLink {
+  margin-top: 35px; /* More space above link */
+  font-size: 1em; /* Slightly larger font */
+  color: #555;
+}
+
+.registerLink__a {
+  text-decoration: none;
+  color: var(--cprimary-color);
+  font-weight: 600; /* Bolder */
+  transition: color 0.3s ease;
+}
+
+.registerLink__a:hover {
+  text-decoration: underline;
+  color: var(--caccent-color);
+}
+
+/* Decorative Lines */
+.decorativeLine {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.1), transparent); /* Subtle gradient line */
+    margin: 25px 0; /* Space above/below lines */
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 600px) {
+    .loginPageWrapper {
+        padding: 15px; /* Reduce padding on smaller screens */
+    }
+    .clubLoginContainer {
+        padding: 40px 25px; /* Reduce container padding */
+        max-width: 380px; /* Adjusted max width */
+    }
+
+    .clubLoginTitle {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+    .clubLoginTitle::after {
+        bottom: 10px;
+    }
+
+    .inputField,
+    .inputLabel {
+        font-size: 1em; /* Adjust font size */
+    }
+
+    .inputField {
+        padding: 12px 15px 12px 40px; /* Adjust padding with icon */
+    }
+
+    .inputIcon {
+        left: 10px; /* Adjust icon position */
+        font-size: 18px; /* Adjust icon size if needed */
+    }
+
+    .inputLabel {
+        top: 13px; /* Adjust label position */
+        left: 40px;
+    }
+     .inputField:focus + .inputLabel,
+     .inputField:not(:placeholder-shown) + .inputLabel {
+         top: -8px; /* Adjusted moved label position */
+         left: 35px;
+         font-size: 0.85em;
+     }
+
+
+    .formOptions {
+        flex-direction: column; /* Stack options */
+        align-items: flex-start; /* Align items to the start */
+        gap: 10px; /* Space between stacked options */
+        margin-bottom: 25px;
+        font-size: 0.9em;
+    }
+
+    .rememberMeCheckbox {
+        width: 14px;
+        height: 14px;
+    }
+
+    .loginButton {
+        font-size: 1.2em;
+        padding: 14px 15px;
+    }
+
+    .registerLink {
+        margin-top: 30px;
+        font-size: 0.9em;
+    }
+
+    /* Adjusted background element styles for small screens */
+    .backgroundElement {
+        filter: blur(25px); /* Less blur on smaller screens */
+    }
+
+    .elementCircle1 { width: 60px; height: 60px; top: 8%; left: 5%; }
+    .elementSquare2 { width: 80px; height: 80px; top: 15%; right: 10%; }
+    .elementCircle3 { width: 50px; height: 50px; bottom: 15%; left: 8%; }
+    .elementSquare4 { width: 70px; height: 70px; top: 45%; right: 2%; }
+    .elementCircle5 { width: 90px; height: 90px; bottom: 5%; right: 5%; }
+    .elementSquare6 { width: 50px; height: 50px; top: 35%; left: 3%; }
+    .elementCircle7 { width: 70px; height: 70px; bottom: 25%; left: 10%; }
+
+
+     .decorativeLine {
+         margin: 20px 0;
+     }
+}
+
+@media (max-width: 400px) {
+    .clubLoginContainer {
+        padding: 30px 20px;
+    }
+    .clubLoginTitle {
+        font-size: 1.8em;
+    }
+    .inputField {
+        padding: 10px 10px 10px 35px;
+    }
+     .inputIcon {
+         left: 8px;
+         font-size: 16px;
+     }
+      .inputLabel {
+          top: 11px;
+          left: 35px;
+      }
+      .inputField:focus + .inputLabel,
+     .inputField:not(:placeholder-shown) + .inputLabel {
+         top: -6px;
+         left: 30px;
+         font-size: 0.8em;
+     }
+     .loginButton {
+         font-size: 1.1em;
+         padding: 12px 10px;
+     }
+
+     /* Further reduce background elements on very small screens */
+    .backgroundElement {
+        filter: blur(20px);
+        opacity: 0.1;
+    }
+
+    .elementCircle1 { width: 50px; height: 50px; top: 10%; left: 5%; }
+    .elementSquare2 { width: 60px; height: 60px; top: 20%; right: 5%; }
+    .elementCircle3 { width: 40px; height: 40px; bottom: 10%; left: 10%; }
+    .elementSquare4 { width: 50px; height: 50px; top: 50%; right: 1%; }
+    .elementCircle5 { width: 70px; height: 70px; bottom: 5%; right: 2%; }
+    .elementSquare6 { display: none; } /* Hide some on smallest screens */
+    .elementCircle7 { width: 50px; height: 50px; bottom: 20%; left: 5%; }
+}
