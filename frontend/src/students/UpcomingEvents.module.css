@@ -1,0 +1,599 @@
+/* frontend/src/students/UpcomingEvents.module.css */
+
+/* Define color palette and base styles */
+:root {
+--primary-color: #007bff; /* Professional Blue */
+--primary-color-dark: #0056b3;
+--secondary-color: #17a2b8; /* Info Teal */
+--accent-color: #ffc107; /* Warm Yellow/Orange */
+--success-color: #28a745;
+--success-color-dark: #1e7e34;
+--error-color: #dc3545;
+--error-color-dark: #a71d2a;
+--light-bg: #f8f9fa; /* Very light gray */
+--card-bg: #ffffff;
+--text-color: #343a40;
+--text-muted: #6c757d;
+--border-color: #dee2e6;
+--border-radius: 8px;
+--card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+--card-hover-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+--font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Add Poppins to your project */
+}
+
+.upcomingEventsContainer {
+padding: 30px clamp(15px, 5vw, 50px); /* Responsive padding */
+font-family: var(--font-family);
+background-color: var(--light-bg);
+min-height: calc(100vh - 60px); /* Adjust if you have a fixed header */
+color: var(--text-color);
+/* Optional subtle background gradient */
+/* background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); */
+}
+
+.pageTitle {
+color: var(--primary-color);
+margin-bottom: 30px;
+display: flex;
+align-items: center;
+gap: 12px;
+font-weight: 600;
+font-size: clamp(1.8rem, 5vw, 2.2rem); /* Responsive font size */
+border-bottom: 3px solid var(--primary-color-dark);
+padding-bottom: 15px;
+}
+
+/* --- Global Error --- */
+.globalError {
+    background-color: #f8d7da; /* Light red */
+    color: var(--error-color-dark);
+    border: 1px solid #f5c6cb; /* Lighter red border */
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+}
+
+/* --- Controls Section --- */
+.controls {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid for controls */
+gap: 25px;
+margin-bottom: 40px;
+padding: 20px;
+background-color: var(--card-bg);
+border-radius: var(--border-radius);
+box-shadow: var(--card-shadow);
+border: 1px solid var(--border-color);
+}
+
+.controlGroup {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+.controlLabel {
+font-weight: 500;
+font-size: 0.9rem;
+color: var(--text-muted);
+display: flex;
+align-items: center;
+gap: 5px;
+}
+
+/* Wrapper for input/select and icon */
+.inputIconWrapper {
+position: relative;
+display: flex;
+align-items: center;
+}
+
+.inputIcon {
+position: absolute;
+left: 12px;
+top: 50%;
+transform: translateY(-50%);
+color: var(--text-muted);
+font-size: 1rem;
+pointer-events: none; /* Don't block input clicks */
+}
+
+.inputField,
+.selectField {
+padding: 10px 15px 10px 40px; /* Left padding for icon */
+border: 1px solid var(--border-color);
+border-radius: var(--border-radius);
+font-size: 1rem;
+width: 100%;
+box-sizing: border-box;
+transition: border-color 0.2s ease, box-shadow 0.2s ease;
+background-color: #fff; /* Ensure background is white */
+}
+.selectField {
+    appearance: none; /* Remove default arrow */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%236c757d' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3E%3C/svg%3E"); /* Custom arrow */
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 1em;
+    padding-right: 40px; /* Space for custom arrow */
+}
+
+
+.inputField:focus,
+.selectField:focus {
+border-color: var(--primary-color);
+outline: none;
+box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Style the View Registered Button Group */
+.viewRegisteredButtonGroup {
+    justify-content: flex-end; /* Push button to the end in its grid cell */
+    align-items: flex-end; /* Align button to bottom */
+}
+
+.viewRegisteredButton {
+padding: 10px 20px;
+background-color: var(--secondary-color);
+color: white;
+border: none;
+border-radius: var(--border-radius);
+cursor: pointer;
+font-size: 1rem;
+font-weight: 500;
+display: inline-flex; /* Use inline-flex */
+align-items: center;
+gap: 8px;
+transition: background-color 0.3s ease, transform 0.1s ease;
+white-space: nowrap; /* Prevent wrapping */
+}
+
+.viewRegisteredButton:hover:not(:disabled) {
+background-color: #138496; /* Darker teal */
+transform: translateY(-2px);
+}
+
+.viewRegisteredButton:disabled {
+background-color: #cccccc;
+cursor: not-allowed;
+opacity: 0.7;
+}
+
+.loginPrompt {
+    grid-column: 1 / -1; /* Span across all columns if needed */
+    text-align: center;
+    padding: 15px;
+    background-color: #e9ecef;
+    border-radius: var(--border-radius);
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* --- Content Area --- */
+.contentArea {
+margin-top: 20px;
+}
+
+/* Centered Messages (Loading, Error, No Events) */
+.centeredMessage {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+min-height: 300px;
+text-align: center;
+color: var(--text-muted);
+padding: 20px;
+}
+.centeredMessage h2 {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+.centeredMessage p {
+font-size: 1.1rem;
+margin-top: 15px;
+max-width: 400px;
+line-height: 1.6;
+}
+
+/* --- Events Grid --- */
+.eventsGrid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Slightly larger min size */
+gap: 30px;
+}
+
+/* --- Event Card --- */
+.eventCard {
+background-color: var(--card-bg);
+border-radius: var(--border-radius);
+box-shadow: var(--card-shadow);
+border: 1px solid var(--border-color);
+display: flex;
+flex-direction: column;
+transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+overflow: hidden; /* Ensure children don't overflow rounded corners */
+}
+
+.eventCard:hover {
+transform: translateY(-5px);
+box-shadow: var(--card-hover-shadow);
+}
+
+/* Style card when registered */
+.eventCardRegistered {
+    border-left: 5px solid var(--primary-color); /* Add a visual indicator */
+}
+
+.cardHeader {
+padding: 20px 20px 15px 20px;
+border-bottom: 1px solid var(--border-color);
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+gap: 10px;
+}
+
+.eventName {
+margin: 0;
+color: var(--primary-color-dark);
+font-size: 1.3rem;
+font-weight: 600;
+line-height: 1.3;
+}
+
+.eventEid {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    background-color: #e9ecef;
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+
+.cardBody {
+padding: 15px 20px;
+flex-grow: 1; /* Allows body to take space */
+}
+
+.eventMeta {
+display: flex;
+align-items: center;
+gap: 10px;
+color: var(--text-muted);
+font-size: 0.95rem;
+margin-bottom: 12px;
+}
+.eventMeta svg {
+color: var(--secondary-color); /* Use teal for icons */
+flex-shrink: 0;
+width: 16px; /* Consistent icon size */
+height: 16px;
+}
+.eventMeta span {
+    line-height: 1.4;
+}
+.eventMeta strong {
+color: var(--text-color);
+font-weight: 500;
+}
+
+.eventDetails {
+font-size: 0.9rem;
+color: var(--text-muted);
+line-height: 1.6;
+margin-top: 15px;
+}
+
+.cardFooter {
+padding: 15px 20px;
+border-top: 1px solid var(--border-color);
+background-color: #f8f9fa; /* Slightly different footer background */
+}
+
+/* Registration Area Styling */
+.registrationArea {
+display: flex;
+align-items: center;
+justify-content: space-between; /* Pushes button and message apart */
+gap: 10px;
+flex-wrap: wrap; /* Allow wrap on small cards */
+}
+
+.registerButton {
+padding: 8px 16px; /* Slightly smaller padding */
+border: none;
+border-radius: var(--border-radius);
+cursor: pointer;
+font-size: 0.9rem;
+font-weight: 600;
+transition: all 0.2s ease;
+display: inline-flex;
+align-items: center;
+gap: 6px;
+min-width: 120px; /* Ensure minimum width */
+justify-content: center; /* Center content */
+text-align: center;
+}
+
+.registerButton.notRegistered {
+    background-color: var(--success-color);
+    color: white;
+}
+.registerButton.notRegistered:hover:not(:disabled) {
+    background-color: var(--success-color-dark);
+    transform: scale(1.03);
+}
+
+.registerButton.registered {
+background-color: var(--primary-color);
+color: white;
+cursor: default; /* Not clickable */
+}
+/* No hover effect needed for already registered */
+
+.registerButton.loading {
+background-color: var(--accent-color);
+color: #333; /* Darker text on yellow */
+cursor: wait;
+}
+.spinner {
+animation: spin 1s linear infinite;
+}
+@keyframes spin {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+
+.registerButton:disabled:not(.registered) { /* Style disabled only if not already registered */
+cursor: not-allowed;
+opacity: 0.65;
+background-color: #a0a0a0;
+}
+
+/* Status Messages below button */
+.regStatusMessage {
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-grow: 1; /* Take remaining space */
+    justify-content: flex-end; /* Align message to the right */
+}
+
+.regSuccess { color: var(--success-color-dark); }
+.regError { color: var(--error-color-dark); }
+
+/* Flash effect on success/error */
+@keyframes flash-success {
+    0%, 100% { background-color: var(--success-color); }
+    50% { background-color: #d4edda; color: var(--success-color-dark); } /* Flash lighter */
+}
+@keyframes flash-error {
+    0%, 100% { background-color: var(--error-color); }
+    50% { background-color: #f8d7da; color: var(--error-color-dark); } /* Flash lighter */
+}
+
+.registerButton.successFlash {
+    animation: flash-success 1s ease-out;
+}
+.registerButton.errorFlash {
+    animation: flash-error 1s ease-out;
+}
+
+
+.loginToRegisterPrompt,
+.noRegistration {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0; /* Add some padding */
+    justify-content: center;
+    width: 100%; /* Take full width */
+    text-align: center;
+}
+.noRegistration svg {
+    color: var(--text-muted);
+}
+
+/* --- Modal Styles --- */
+.modalOverlay {
+position: fixed;
+inset: 0; /* top, left, right, bottom = 0 */
+background-color: rgba(0, 0, 0, 0.65); /* Darker overlay */
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 1050; /* Ensure above other content */
+opacity: 0;
+animation: fadeIn 0.3s forwards;
+}
+@keyframes fadeIn {
+to { opacity: 1; }
+}
+
+.modalContent {
+background-color: #fff;
+padding: 25px 30px;
+border-radius: var(--border-radius);
+box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+position: relative;
+max-width: 650px;
+width: 90%;
+max-height: 85vh;
+overflow-y: auto;
+transform: scale(0.95);
+opacity: 0;
+animation: slideInUp 0.4s forwards 0.1s; /* Slide in after fade */
+}
+@keyframes slideInUp {
+to { transform: scale(1); opacity: 1; }
+}
+
+.modalCloseButton {
+position: absolute;
+top: 15px;
+right: 15px;
+background: transparent;
+border: none;
+font-size: 1.8rem; /* Larger close icon */
+cursor: pointer;
+color: #aaa;
+line-height: 1; /* Prevent extra space */
+padding: 5px;
+transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.modalCloseButton:hover {
+color: var(--error-color);
+transform: rotate(90deg);
+}
+
+.modalTitle {
+margin-top: 0;
+margin-bottom: 25px;
+display: flex;
+align-items: center;
+gap: 10px;
+font-size: 1.6rem;
+color: var(--primary-color);
+padding-bottom: 10px;
+border-bottom: 2px solid var(--primary-color-light);
+}
+
+.modalError {
+    color: var(--error-color-dark);
+    border: 1px solid var(--error-color);
+    background-color: #f8d7da;
+    padding: 15px;
+    border-radius: var(--border-radius);
+}
+
+.registeredEventsList {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+.registeredEventItem {
+border-bottom: 1px solid var(--border-color);
+padding: 18px 0;
+position: relative; /* For EID positioning */
+}
+
+.registeredEventItem:last-child {
+border-bottom: none;
+}
+
+.registeredEventName {
+display: block;
+margin-bottom: 8px;
+font-size: 1.15rem;
+font-weight: 600;
+color: var(--text-color);
+}
+
+.registeredEventItem p {
+margin: 6px 0 0 0;
+font-size: 0.9rem;
+color: var(--text-muted);
+display: flex;
+align-items: center;
+gap: 8px;
+}
+.registeredEventItem p svg {
+    width: 15px;
+    height: 15px;
+    color: var(--secondary-color);
+}
+.registeredEventEid {
+    position: absolute;
+    top: 18px;
+    right: 0;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    background-color: #eee;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+.pageTitle {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+}
+.controls {
+    grid-template-columns: 1fr; /* Stack controls */
+    gap: 20px;
+    padding: 15px;
+    margin-bottom: 30px;
+}
+.viewRegisteredButtonGroup {
+    justify-content: flex-start; /* Align button left */
+    align-items: center;
+}
+.viewRegisteredButton {
+    width: 100%; /* Make button full width */
+    justify-content: center;
+}
+
+.eventsGrid {
+    grid-template-columns: 1fr; /* Stack cards */
+    gap: 20px;
+}
+    .cardHeader {
+        flex-direction: column; /* Stack title and EID */
+        align-items: flex-start;
+    }
+    .eventEid {
+        align-self: flex-start; /* Keep EID left aligned */
+    }
+    .registrationArea {
+        flex-direction: column; /* Stack button and message */
+        align-items: flex-start; /* Align items left */
+        gap: 15px;
+    }
+    .registerButton {
+        width: 100%; /* Full width button */
+    }
+    .regStatusMessage {
+        justify-content: flex-start; /* Align message left */
+        width: 100%; /* Take full width */
+    }
+
+.modalContent {
+    padding: 20px;
+    width: 95%;
+}
+.modalTitle {
+    font-size: 1.4rem;
+}
+.registeredEventEid {
+    position: static; /* Remove absolute positioning */
+    margin-top: 8px;
+    display: inline-block; /* Make it inline block */
+}
+}
+
+/* Add specific styles for the spinner icon if needed */
+.spinner {
+/* You might not need specific styles if FontAwesome handles animation */
+}
