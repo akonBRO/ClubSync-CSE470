@@ -1,0 +1,341 @@
+/* src/admin/AdminBudgetModal.module.css */
+/* Assuming theme variables are available or defined similarly to ManageEvents.module.css */
+/* Re-defining for standalone example, ideally these are global */
+:root {
+    --primary-color: #007bff;
+    --primary-hover-color: #0056b3;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #17a2b8;
+    --light-bg-color: #f8f9fa;
+    --dark-text-color: #343a40;
+    --light-text-color: #7f8c8d;
+    --border-color: #dee2e6;
+    --card-bg-color: #ffffff;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --border-radius: 8px;
+    --font-family: 'Poppins', sans-serif; /* Ensure Poppins is loaded */
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.65); /* Slightly more pronounced overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050; /* Higher z-index for modals */
+    padding: 20px; /* Padding for smaller screens */
+    backdrop-filter: blur(3px); /* Subtle blur */
+}
+
+.modalContent {
+    background-color: var(--card-bg-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    max-width: 750px;
+    width: 100%;
+    z-index: 1051;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh; /* Limit height */
+    font-family: var(--font-family);
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding: 20px 25px;
+    background-color: var(--light-bg-color); /* Header background */
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+.headerTitle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.3rem;
+    color: var(--dark-text-color);
+    font-weight: 600;
+}
+
+.headerTitle svg {
+    color: var(--primary-color);
+}
+
+.closeButton {
+    background: transparent;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: var(--secondary-color);
+    transition: color 0.2s ease, transform 0.2s ease;
+    padding: 5px; /* Easier to click */
+}
+
+.closeButton:hover {
+    color: var(--dark-text-color);
+    transform: rotate(90deg);
+}
+
+.modalBody {
+    padding: 25px;
+    overflow-y: auto; /* Enable scrolling for body content */
+    flex-grow: 1; /* Allow body to take available space */
+}
+
+.spinnerIcon, .buttonSpinnerIcon {
+    animation: spin 1s linear infinite;
+}
+.buttonSpinnerIcon { margin-right: 8px; }
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.centeredMessage {
+    text-align: center;
+    padding: 30px 10px;
+    color: var(--light-text-color);
+}
+.centeredMessage svg {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.centeredMessage p {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: var(--dark-text-color);
+}
+.centeredMessage p:last-of-type {
+    font-size: 0.9rem;
+    color: var(--light-text-color);
+}
+
+.infoMessage svg { color: var(--info-color); }
+.errorMessage svg { color: var(--danger-color); }
+.errorMessage {
+    background-color: #fdecea;
+    color: var(--danger-color);
+    padding: 12px 15px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--danger-color);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.inlineErrorMessage {
+    font-size: 0.9rem;
+}
+
+
+.budgetDetailsSection, .adminReviewSection {
+    margin-bottom: 25px;
+}
+
+.budgetDetailsSection h4, .adminReviewSection h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark-text-color);
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.budgetDetailsSection h4 svg, .adminReviewSection h4 svg {
+    color: var(--primary-color);
+}
+
+.tableContainer {
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+.budgetItemsTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.budgetItemsTable th,
+.budgetItemsTable td {
+    border-bottom: 1px solid var(--border-color);
+    padding: 12px 15px;
+    text-align: left;
+    white-space: nowrap; /* Prevent wrapping in table cells */
+}
+.budgetItemsTable td:first-child, .budgetItemsTable td:nth-child(2) {
+    white-space: normal; /* Allow item name and category to wrap */
+}
+
+.budgetItemsTable th {
+    background-color: var(--light-bg-color);
+    font-weight: 600;
+    color: var(--dark-text-color);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+.budgetItemsTable tr:last-child td {
+    border-bottom: none;
+}
+
+.budgetItemsTable tbody tr:hover {
+    background-color: #e9f5ff;
+}
+.budgetItemsTable td svg {
+    margin-right: 6px;
+    color: var(--secondary-color);
+    vertical-align: middle;
+}
+
+
+.noItemsMessage {
+    font-style: italic;
+    color: var(--light-text-color);
+    padding: 10px 0;
+}
+
+.totalBudget {
+    margin-top: 20px;
+    text-align: right;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.totalBudget span {
+    color: var(--success-color);
+    padding: 5px 10px;
+    background-color: #e6f7ec;
+    border-radius: 4px;
+}
+
+.reviewForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.formGroup label {
+    font-weight: 500;
+    color: var(--dark-text-color);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.formGroup label svg {
+    color: var(--secondary-color);
+}
+
+.formSelect, .formTextarea {
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: var(--font-family);
+    background-color: var(--card-bg-color);
+    color: var(--dark-text-color);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.formSelect:focus, .formTextarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+.formSelect {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236c757d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 1em;
+    padding-right: 40px; /* Make space for custom arrow */
+}
+
+
+.formTextarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.formSelect:disabled, .formTextarea:disabled {
+    background-color: var(--light-bg-color);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+
+.modalFooter {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 25px;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--light-bg-color);
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+}
+
+.footerButton {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.footerButton:active:not(:disabled) {
+    transform: scale(0.97);
+}
+.footerButton:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.cancelButton {
+    background-color: var(--card-bg-color);
+    color: var(--secondary-color);
+    border: 1px solid var(--border-color);
+}
+.cancelButton:hover:not(:disabled) {
+    background-color: #e9ecef; /* Slightly darker on hover */
+}
+
+.submitButton {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+.submitButton:hover:not(:disabled) {
+    background-color: var(--primary-hover-color);
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+.submitButton:disabled {
+    background-color: #a0c7ff; /* Lighter primary when disabled */
+}
