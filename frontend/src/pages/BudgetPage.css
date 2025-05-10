@@ -1,0 +1,397 @@
+/* BudgetPage.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+  --primary-color: #007bff; /* Blue */
+  --primary-hover: #0056b3;
+  --secondary-color: #6c757d; /* Gray */
+  --secondary-hover: #5a6268;
+  --success-color: #28a745; /* Green */
+  --danger-color: #dc3545; /* Red */
+  --warning-color: #ffc107; /* Yellow */
+  --info-color: #17a2b8; /* Teal */
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+  --border-color: #dee2e6;
+  --background-color: #ffffff;
+  --text-color: #212529;
+  --font-family: 'Roboto', sans-serif;
+  --border-radius: 0.3rem;
+  --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --input-bg: #fff;
+  --input-border: #ced4da;
+  --input-focus-border: #86b7fe;
+  --input-focus-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+body {
+  background-color: var(--light-color); /* Light gray background for the page */
+  font-family: var(--font-family);
+  color: var(--text-color);
+  margin: 0;
+}
+
+.budget-container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+/* Header */
+.budget-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+  gap: 1rem;
+}
+
+.budget-header h1 {
+  font-size: 1.75rem;
+  font-weight: 500;
+  margin: 0;
+  color: var(--dark-color);
+}
+
+.budget-header .event-name {
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.status-section {
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35em 0.65em;
+  font-size: 0.9em;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: var(--border-radius);
+}
+
+.status-badge.pending { background-color: var(--warning-color); color: var(--dark-color);}
+.status-badge.hold { background-color: var(--info-color); }
+.status-badge.approved { background-color: var(--success-color); }
+.status-badge.rejected { background-color: var(--danger-color); }
+.status-badge.unknown { background-color: var(--secondary-color); }
+
+
+/* Alerts */
+.alert {
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+}
+
+.alert-error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+/* Loading States */
+.loading-container, .loading-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--secondary-color);
+  gap: 0.75rem;
+}
+.loading-overlay {
+    position: absolute;
+    inset: 0; /* Cover entire container */
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    z-index: 10; /* Appear above content */
+}
+
+.spinner {
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/* Table Styles */
+.table-responsive {
+  overflow-x: auto; /* Allow horizontal scrolling on small screens */
+  margin-bottom: 1.5rem;
+}
+
+.budget-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--background-color);
+}
+
+.budget-table th,
+.budget-table td {
+  border: 1px solid var(--border-color);
+  padding: 0.8rem 1rem;
+  text-align: left;
+  font-size: 0.95rem;
+  vertical-align: middle;
+}
+
+.budget-table th {
+  background-color: var(--light-color);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.budget-table tbody tr:nth-child(even) {
+  background-color: #fdfdfd;
+}
+
+.budget-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Specific Column Styles */
+.col-quantity, .col-price { text-align: right; }
+.col-actions { text-align: center; width: 80px; }
+
+.budget-table td[data-label="Total Price ($)"] .price-display {
+    font-weight: 500;
+    display: block;
+    text-align: right;
+}
+.budget-table.readonly td[data-label="Total ($)"] {
+    font-weight: 500;
+    text-align: right;
+}
+
+/* Input/Select Styles within Table */
+.form-input, .form-select {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--input-bg);
+  background-clip: padding-box;
+  border: 1px solid var(--input-border);
+  appearance: none; /* Remove default styling */
+  border-radius: var(--border-radius);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-input:focus, .form-select:focus {
+  color: var(--text-color);
+  background-color: var(--input-bg);
+  border-color: var(--input-focus-border);
+  outline: 0;
+  box-shadow: var(--input-focus-shadow);
+}
+
+.form-input[type="number"] {
+  text-align: right;
+}
+
+/* Make select look consistent */
+.form-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+}
+
+/* No Items Row */
+.no-items-row td {
+    text-align: center;
+    color: var(--secondary-color);
+    font-style: italic;
+    padding: 2rem;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-flex; /* For icon alignment */
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* Space between icon and text */
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.btn-primary { color: #fff; background-color: var(--primary-color); border-color: var(--primary-color); }
+.btn-primary:hover { background-color: var(--primary-hover); border-color: var(--primary-hover); }
+.btn-primary:focus { box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5); }
+
+.btn-secondary { color: #fff; background-color: var(--secondary-color); border-color: var(--secondary-color); }
+.btn-secondary:hover { background-color: var(--secondary-hover); border-color: var(--secondary-hover); }
+
+.btn-danger { color: #fff; background-color: var(--danger-color); border-color: var(--danger-color); }
+.btn-danger:hover { background-color: #c82333; border-color: #bd2130; }
+
+/* Icon Button Specifics */
+.btn-icon {
+  padding: 0.5rem 0.6rem; /* Smaller padding for icon only */
+  line-height: 1; /* Ensure icon is centered vertically */
+}
+
+/* Form Footer / Summary */
+.budget-form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: var(--light-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    margin-top: 1.5rem;
+}
+
+.btn-add-item {
+    /* Specific styles if needed */
+}
+
+.budget-summary {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-left: auto; /* Push summary to the right before submit button */
+    margin-right: 1rem; /* Space before submit button */
+}
+
+.budget-summary h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+
+.budget-summary .total-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+.btn-submit {
+    /* Specific styles if needed */
+}
+
+/* Read Only View */
+.budget-readonly {
+    margin-top: 1.5rem;
+}
+
+.readonly-info {
+    background-color: #eef; /* Light blue background */
+    border-left: 5px solid var(--info-color);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.budget-readonly h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.budget-table.readonly tfoot td {
+    font-weight: bold;
+    background-color: var(--light-color);
+}
+
+.budget-table.readonly .total-label {
+    text-align: right;
+}
+
+
+/* Responsive Adjustments (Simplified) */
+@media (max-width: 768px) {
+  .budget-container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .budget-header {
+      flex-direction: column; /* Stack header elements */
+      align-items: flex-start;
+  }
+
+  .budget-form-footer {
+      flex-direction: column;
+      align-items: stretch; /* Make buttons full width */
+  }
+  .budget-summary {
+      justify-content: space-between; /* Space out total label and amount */
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 1rem;
+      margin-bottom: 1rem; /* Add space before submit */
+      border-top: 1px solid var(--border-color);
+      padding-top: 1rem;
+  }
+
+  /* Keep table scrollable instead of complex block layout for simplicity */
+  /* You can uncomment and adapt the previous block layout if preferred */
+  .budget-table th, .budget-table td {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  /* Make action button slightly bigger touch target */
+  .btn-icon {
+    padding: 0.6rem 0.7rem;
+  }
+}
