@@ -1,0 +1,457 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Basic Reset and Body Styling - Keep minimal global styles */
+body {
+    margin: 0;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Using Poppins */
+    background-color: #f8f9fa; /* Light background from reference */
+    color: #343a40; /* Text color from reference */
+    line-height: 1.6;
+    min-height: 100vh; /* Ensure it takes full height */
+    /* Removed flex properties from body to avoid affecting other pages */
+}
+
+/* Scoped container for the entire Student Profile page */
+.student-profile-container {
+    width: 100%;
+     /* Slightly smaller max-width */
+    margin: 30px auto; /* Center the container with top/bottom margin */
+    padding: 0 clamp(15px, 5vw, 30px); /* Responsive horizontal padding */
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Space between header area and card */
+    box-sizing: border-box; /* Include padding in calculation */
+}
+
+/* Page Header Area (for title and logout) - Scoped */
+.student-profile-container .page-header-area {
+    display: flex;
+    justify-content: space-between; /* Space out title and button */
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 15px; /* Space between items when wrapped */
+    padding-bottom: 15px; /* Space below header area */
+    border-bottom: 3px solid #9C27B0; /* Primary purple underline */
+}
+
+/* Page Title - Scoped */
+.student-profile-container .page-title {
+    margin: 0; /* Remove default margin */
+    font-size: clamp(1.8rem, 5vw, 2.2rem); /* Responsive font size from reference */
+    font-weight: 600; /* Font weight from reference */
+    color: #673AB7; /* Darker purple for title */
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Space between icon and text */
+}
+
+/* Logout Button - Scoped (Styled like logoutButtonSidebar) */
+.student-profile-container .logout-button {
+    padding: 10px 20px; /* Adjusted padding */
+    border: none; /* No border */
+    border-radius: 8px; /* Border radius from reference */
+    background-color: #E91E63; /* Pink/Magenta for logout */
+    color: white;
+    font-size: 1rem; /* Adjusted font size */
+    font-weight: 500; /* Font weight from reference */
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.2s ease-in-out; /* Added transform */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Adjusted gap */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.student-profile-container .logout-button:hover:not(:disabled) {
+    background-color: #D81B60; /* Darker pink/magenta */
+    transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+.student-profile-container .logout-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #cccccc;
+    color: #7f8c8d;
+}
+
+
+/* Profile Card Container - Scoped */
+.student-profile-container .profile-card {
+    padding: 25px;
+    background-color: #ffffff; /* White background from reference */
+    border-radius: 8px; /* Rounded corners from reference */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Card shadow from reference */
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Space between sections */
+    border: 1px solid #dee2e6; /* Border color from reference */
+}
+
+/* Loading, Error States - Scoped */
+.student-profile-container .profile-card.loading-state,
+.student-profile-container .profile-card.error-state {
+    text-align: center;
+    padding: 50px 20px;
+    font-size: 1.1em;
+    color: #6c757d; /* Muted text color from reference */
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none; /* Remove card shadow for these states */
+    border: none; /* Remove card border */
+    background-color: transparent; /* Transparent background */
+}
+
+/* Spinner - Scoped */
+.student-profile-container .spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #9C27B0; /* Primary purple spinner */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Message Styles - Scoped (Using global-message concept from reference) */
+.student-profile-container .global-message {
+    padding: 15px; /* Padding from reference */
+    border-radius: 8px; /* Border radius from reference */
+    margin-bottom: 20px;
+    font-weight: 500; /* Font weight from reference */
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Gap from reference */
+    border: 1px solid transparent; /* Base border */
+}
+
+.student-profile-container .global-message.success {
+    background-color: #d4edda; /* Lighter green */
+    color: #155724; /* Dark green */
+    border-color: #c3e6cb; /* Green border */
+}
+
+.student-profile-container .global-message.error {
+    background-color: #f8d7da; /* Lighter red */
+    color: #721c24; /* Dark red */
+    border-color: #f5c6cb; /* Red border */
+}
+
+.student-profile-container .global-message .message-icon {
+    font-size: 1.2em; /* Icon size */
+    flex-shrink: 0;
+}
+
+
+/* Profile Sections Grid - Scoped */
+.student-profile-container .profile-sections {
+    display: grid; /* Use grid for layout */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
+    gap: 20px; /* Adjusted gap */
+}
+
+/* Individual Profile Section - Scoped */
+.student-profile-container .profile-section {
+    background-color: #ffffff; /* White background */
+    padding: 20px;
+    border-radius: 8px; /* Border radius */
+    border: 1px solid #dee2e6; /* Border */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+/* Section Title - Scoped */
+.student-profile-container .section-title {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    color: #343a40; /* Text color from reference */
+    border-bottom: 1px dashed #dee2e6; /* Dashed underline from reference */
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.student-profile-container .section-title .icon {
+    margin-right: 8px;
+    color: #9C27B0; /* Primary purple color */
+}
+
+/* Form Groups - Scoped */
+.student-profile-container .form-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column; /* Stack label and input */
+}
+
+/* Read-only Form Group - Scoped */
+.student-profile-container .form-group.read-only label {
+    color: #6c757d; /* Muted text color for read-only labels */
+}
+
+
+/* Form Label - Scoped */
+.student-profile-container .form-group label {
+    font-weight: 500; /* Font weight from reference */
+    margin-bottom: 6px;
+    color: #6c757d; /* Muted text color */
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.student-profile-container .form-group label .icon {
+    margin-right: 6px;
+    color: #9C27B0; /* Primary purple color */
+}
+
+/* Wrapper for input/select and icon (if used) */
+.student-profile-container .input-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%; /* Take full width */
+}
+
+.student-profile-container .input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d; /* Muted text color */
+    font-size: 1rem;
+    pointer-events: none;
+}
+
+/* Input, Textarea, Select - Scoped */
+.student-profile-container .profile-input,
+.student-profile-container .profile-textarea,
+.student-profile-container .profile-select {
+    padding: 10px 15px; /* Padding from reference */
+    border: 1px solid #dee2e6; /* Border from reference */
+    border-radius: 8px; /* Border radius from reference */
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Transition from reference */
+    background-color: #fff; /* Ensure white background */
+    color: #343a40; /* Text color from reference */
+    width: 100%; /* Ensure full width */
+}
+
+/* Adjust padding for inputs/selects inside input-icon-wrapper */
+.student-profile-container .input-icon-wrapper .profile-input,
+.student-profile-container .input-icon-wrapper .profile-select {
+     padding-left: 40px; /* Space for icon */
+}
+
+/* Custom select arrow */
+.student-profile-container .profile-select {
+    appearance: none; /* Remove default arrow */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%236c757d' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3E%3C/svg%3E"); /* Custom arrow */
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 1em;
+    padding-right: 40px; /* Space for custom arrow */
+}
+
+
+.student-profile-container .profile-input:focus,
+.student-profile-container .profile-textarea:focus,
+.student-profile-container .profile-select:focus {
+    border-color: #9C27B0; /* Primary purple on focus */
+    box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.25); /* Focus shadow using purple */
+    outline: none;
+}
+
+.student-profile-container .profile-input:disabled,
+.student-profile-container .profile-textarea:disabled,
+.student-profile-container .profile-select:disabled {
+    background-color: #e9ecef; /* Light background from reference */
+    color: #6c757d; /* Muted text color */
+    cursor: not-allowed;
+}
+
+/* Read-only Input Field - Scoped */
+.student-profile-container .profile-input.read-only-field {
+    background-color: #f8f9fa; /* Light background from reference */
+    border-color: #dee2e6; /* Border color from reference */
+    color: #343a40; /* Text color from reference */
+}
+
+
+/* Textarea Specific - Scoped */
+.student-profile-container .profile-textarea {
+    resize: vertical; /* Allow vertical resizing */
+}
+
+/* Displayed Value Span - Scoped */
+.student-profile-container .profile-value {
+    display: block; /* Make it a block element to match input layout */
+    padding: 10px 15px; /* Match input padding */
+    font-size: 1em;
+    color: #343a40; /* Primary text color */
+    min-height: calc(1em + 20px); /* Ensure consistent height with padding */
+    line-height: 1em; /* Adjust line height */
+    box-sizing: border-box;
+}
+
+
+/* Action Buttons Container - Scoped */
+.student-profile-container .profile-actions {
+    text-align: right; /* Align buttons to the right */
+    margin-top: 20px;
+    display: flex; /* Use flexbox for button alignment */
+    justify-content: flex-end; /* Align items to the end */
+    gap: 10px; /* Space between buttons from reference */
+}
+
+/* Profile Buttons - Scoped */
+.student-profile-container .profile-button {
+    padding: 10px 20px; /* Padding from reference */
+    border: none;
+    border-radius: 8px; /* Border radius from reference */
+    cursor: pointer;
+    font-size: 1rem; /* Font size from reference */
+    font-weight: 500; /* Font weight from reference */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.1s ease; /* Transitions from reference */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* Center text and icon */
+    min-width: 120px; /* Minimum width for buttons */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.student-profile-container .profile-button .button-icon {
+    margin-right: 8px;
+}
+
+/* Edit Button - Scoped */
+.student-profile-container .edit-button {
+    background-color: #ffc107; /* Accent yellow from reference */
+    color: #343a40; /* Text color from reference */
+}
+
+.student-profile-container .edit-button:hover:not(:disabled) {
+    background-color: #e0a800;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Shadow on hover */
+}
+
+/* Save Button - Scoped */
+.student-profile-container .save-button {
+    background-color: #28a745; /* Success green from reference */
+    color: white;
+}
+
+.student-profile-container .save-button:hover:not(:disabled) {
+    background-color: #1e7e34; /* Darker success green from reference */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Shadow on hover */
+}
+
+/* Cancel Button - Scoped */
+.student-profile-container .cancel-button {
+    background-color: #dc3545; /* Error red from reference */
+    color: white;
+}
+
+.student-profile-container .cancel-button:hover:not(:disabled) {
+    background-color: #a71d2a; /* Darker error red from reference */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Shadow on hover */
+}
+
+/* Disabled Button - Scoped */
+.student-profile-container .profile-button:disabled {
+    background-color: #cccccc; /* Grey when disabled */
+    color: #7f8c8d; /* Muted text color when disabled */
+    cursor: not-allowed;
+}
+
+/* Icon Styles - Scoped */
+.student-profile-container .icon {
+    vertical-align: middle; /* Align icons nicely with text */
+}
+
+/* Spinner Icon - Scoped */
+.student-profile-container .spinner-icon {
+    animation: spin 1s linear infinite; /* Spinner animation for button */
+}
+
+
+/* Responsive Adjustments - Scoped */
+@media (max-width: 768px) {
+    /* Body padding remains global */
+
+    .student-profile-container {
+        padding: 0 15px; /* Adjust padding */
+        margin-top: 20px; /* Adjust top margin */
+        gap: 20px; /* Adjust gap */
+    }
+
+    .student-profile-container .page-header-area {
+        flex-direction: column; /* Stack title and button */
+        align-items: flex-start; /* Align items to the start */
+        gap: 10px; /* Adjust gap */
+        padding-bottom: 10px;
+    }
+
+    .student-profile-container .page-title {
+        font-size: 1.5em; /* Adjust title size */
+    }
+
+    .student-profile-container .logout-button {
+        width: auto; /* Allow button to size based on content */
+        align-self: flex-end; /* Align logout button to the right */
+    }
+
+
+    .student-profile-container .profile-card {
+        padding: 15px; /* Adjust padding */
+        gap: 20px; /* Adjust gap */
+    }
+
+    .student-profile-container .profile-sections {
+        grid-template-columns: 1fr; /* Single column layout */
+        gap: 15px; /* Adjust gap */
+    }
+
+    .student-profile-container .profile-section {
+        padding: 15px; /* Adjust padding */
+    }
+
+    .student-profile-container .section-title {
+        font-size: 1.1em; /* Adjust font size */
+        justify-content: flex-start; /* Align section titles to the start */
+    }
+
+    .student-profile-container .form-group {
+        margin-bottom: 15px; /* Adjust margin */
+    }
+
+
+    .student-profile-container .profile-actions {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 8px; /* Space between stacked buttons */
+        align-items: stretch; /* Stretch buttons to full width */
+        text-align: center; /* Center text within buttons */
+    }
+
+    .student-profile-container .profile-button {
+         width: 100%; /* Full width buttons */
+         min-width: auto; /* Remove min-width */
+    }
+
+     .student-profile-container .profile-value {
+         padding: 8px 10px; /* Ensure consistent padding */
+     }
+}
