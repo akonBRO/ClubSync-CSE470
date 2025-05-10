@@ -1,0 +1,240 @@
+/* src/students/StudentDashboard.module.css */
+
+.mainContent {
+    padding: 0; /* Remove main padding */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #f4f6f8; /* Light background */
+}
+
+.dashboardContainer {
+    max-width: 100%; /* Utilize full width */
+    margin: 0; /* Remove container margin */
+    padding: 20px; /* Minimal padding inside container */
+}
+
+.header {
+    background-color: #fff;
+    padding: 20px; /* Reduced header padding */
+    border-radius: 8px; /* Slightly less rounded */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Reduced header margin */
+}
+
+.greetingSection {
+    flex-grow: 1;
+    padding-left: 15px; /* Small left padding */
+}
+
+.greeting {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 3px;
+}
+
+.studentInfo {
+    color: #6c757d;
+    font-size: 1rem;
+}
+
+.summarySection {
+    display: flex;
+    gap: 15px; /* Reduced gap */
+    padding-right: 15px; /* Small right padding */
+}
+
+.summaryCard {
+    background-color: #e9ecef;
+    color: #495057;
+    padding: 10px 15px; /* Reduced padding */
+    border-radius: 6px; /* Slightly less rounded */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Reduced gap */
+}
+
+.summaryIcon {
+    font-size: 1.3rem;
+}
+
+.summaryText {
+    display: flex;
+    flex-direction: column;
+}
+
+.summaryValue {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.summaryLabel {
+    font-size: 0.8rem;
+}
+
+.dashboardBody {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Adjust proportions */
+    gap: 20px; /* Reduced gap */
+}
+
+.leftSection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Reduced gap */
+}
+
+.rightSection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Reduced gap */
+}
+
+.widget {
+    background-color: #fff;
+    border-radius: 8px; /* Slightly less rounded */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    padding: 15px; /* Reduced padding */
+}
+
+.widgetTitle {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px; /* Reduced margin */
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Reduced gap */
+}
+
+.widgetIcon {
+    font-size: 1.2rem;
+    color: #9C27B0;
+}
+
+.widgetList {
+    list-style: none;
+    padding: 0;
+}
+
+.widgetListItem {
+    padding: 10px 0; /* Reduced padding */
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+}
+
+.widgetListItem:last-child {
+    border-bottom: none;
+}
+
+.listItemTitle {
+    font-weight: 500;
+    color: #495057;
+}
+
+.listItemMeta {
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+.clubTagContainer {
+    display: flex;
+    gap: 6px; /* Reduced gap */
+    flex-wrap: wrap;
+    margin-top: 8px; /* Reduced margin */
+}
+
+.clubTag {
+    background-color: #e6ffe9;
+    color: #28a745;
+    padding: 6px 10px; /* Reduced padding */
+    border-radius: 4px; /* Less rounded */
+    font-size: 0.9rem;
+}
+
+.userProfileWidget {
+    background-color: #fff;
+    border-radius: 8px; /* Slightly less rounded */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    padding: 20px; /* Reduced padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profileHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px; /* Reduced margin */
+}
+
+.profileIcon {
+    font-size: 3rem; /* Slightly smaller */
+    color: #673AB7;
+    border-radius: 50%;
+    background-color: #f3e5f5;
+    padding: 10px; /* Reduced padding */
+    margin-bottom: 8px; /* Reduced margin */
+}
+
+.profileName {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.profileDetail {
+    color: #6c757d;
+    margin-bottom: 5px; /* Reduced margin */
+    font-size: 0.9rem;
+}
+
+.viewProfileButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px; /* Less rounded */
+    padding: 8px 15px; /* Reduced padding */
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 15px; /* Reduced margin */
+    transition: background-color 0.2s ease-in-out;
+    font-size: 0.9rem;
+}
+
+.viewProfileButton:hover {
+    background-color: #0056b3;
+}
+
+.viewAllButton {
+    background-color: #9C27B0;
+    color: #fff;
+    border: none;
+    border-radius: 4px; /* Less rounded */
+    padding: 8px 12px; /* Reduced padding */
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 15px; /* Reduced margin */
+    transition: background-color 0.2s ease-in-out;
+    font-size: 0.9rem;
+    width: fit-content;
+}
+
+.viewAllButton:hover {
+    background-color: #7B1FA2;
+}
+
+.noData {
+    color: #6c757d;
+    font-style: italic;
+    margin-top: 10px; /* Reduced margin */
+    font-size: 0.9rem;
+}
