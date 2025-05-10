@@ -1,0 +1,682 @@
+/* src/admin/ManageClubs.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* --- Global Styles / Base Container --- */
+.manageClubsContainer {
+    padding: 30px;
+    background-color: #f9fafb;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    color: #1f2937;
+}
+
+.manageClubsContainer h2 {
+    color: #111827;
+    font-size: 2.3rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 20px;
+}
+
+/* --- Status Counts Section --- */
+.statusCountsSection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.statusCard {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+    border: 1px solid #e5e7eb;
+}
+
+.statusCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.countIcon {
+    font-size: 2.2rem;
+    padding: 12px;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 55px;
+    min-height: 55px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.countIconClubs {
+    background-color: #06b6d4;
+}
+.countIconClubs:hover {
+    background-color: #0891b2;
+}
+.countDetails { 
+
+display: flex;
+
+flex-direction: column;
+
+}
+.countDetails span {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.countDetails strong {
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+/* --- Controls Section --- */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 35px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    align-items: center;
+    border: 1px solid #e5e7eb;
+}
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    padding: 0 15px;
+    background-color: #fff;
+    height: 50px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    min-width: 280px;
+}
+.searchBar:focus-within {
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 0.15rem rgba(14, 165, 233, 0.2);
+}
+
+.searchIcon {
+    color: #6b7280;
+    margin-right: 12px;
+    font-size: 1.2rem;
+}
+
+.searchInput {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 12px 0;
+    background-color: transparent;
+    color: #1f2937;
+}
+.searchInput::placeholder {
+    color: #9ca3af;
+    font-weight: 300;
+}
+
+.filters {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.filterGroup {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #fff;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    padding: 0 15px;
+    height: 50px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.filterGroup:focus-within {
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 0.15rem rgba(14, 165, 233, 0.2);
+}
+
+.filterGroup label {
+    color: #374151;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.filterSelect {
+    padding: 10px 35px 10px 5px;
+    border: none;
+    border-radius: 8px;
+    background-color: transparent;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #1f2937;
+    cursor: pointer;
+    outline: none;
+    min-width: 130px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 1.1em;
+}
+
+.refreshButton {
+    background-color: #4b5563;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0 20px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.refreshButton:hover:not(:disabled) {
+    background-color: #374151;
+}
+.refreshButton:active:not(:disabled) {
+    transform: scale(0.97);
+}
+.refreshButton:disabled {
+    background-color: #d1d5db;
+    color: #9ca3af;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.loadingSpinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- State Messages (Loading, Error, Empty) --- */
+.loadingState, .errorMessage, .emptyState {
+    text-align: center;
+    padding: 50px 25px;
+    margin-top: 25px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    color: #374151;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+    border: 1px solid #e5e7eb;
+}
+
+.errorMessage {
+    background-color: #fef2f2;
+    color: #ef4444;
+    border: 1px solid #fca5a5;
+}
+.errorMessage svg {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+}
+
+.loadingState .spinnerIcon {
+    font-size: 3rem;
+    color: #0ea5e9;
+    animation: spin 1s linear infinite;
+    margin-bottom: 18px;
+}
+
+.emptyState .emptyIcon {
+    font-size: 3rem;
+    color: #9ca3af;
+    margin-bottom: 18px;
+}
+
+.emptyState p:first-of-type {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 10px;
+}
+.emptyState p:last-of-type {
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+/* --- Clubs Grid --- */
+.clubsGridSection {
+    margin-top: 25px;
+}
+
+.clubsGrid {
+    display: grid;
+    /* Default to 2 columns for wider screens */
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* Updated for 2 columns */
+    gap: 25px;
+}
+
+.clubCard {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Ensures card content flows top-to-bottom */
+    justify-content: space-between; /* Distributes space, pushing actions to the bottom */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    word-break: break-word; /* Keep this for other fields */
+    /* overflow: hidden; Removed to allow box shadow to be fully visible and for potential future tooltips on truncated text */
+    border: 1px solid #e5e7eb;
+    /* min-height: 450px; /* Optional: You can set a min-height for all cards if you want them to be a certain minimum size, but line-clamping is more adaptive. */
+}
+
+.clubCard:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.cardHeader {
+    border-bottom: 1px solid #f3f4f6;
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.clubName {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #111827;
+    flex-grow: 1;
+    line-height: 1.3;
+    overflow-wrap: break-word; /* Changed from word-wrap for better compatibility */
+    word-break: break-word; /* Ensures long words break */
+    min-width: 0;
+}
+.clubName input.editInput {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #111827;
+    padding: 8px 10px;
+}
+
+.clubId {
+    font-size: 0.85rem;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    font-weight: 500;
+    background-color: #f3f4f6;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+.clubId .inlineIcon {
+    color: #6b7280;
+    font-size: 0.9em;
+}
+
+.cardEditableInfo,
+.cardOtherInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 18px;
+    flex-grow: 1; /* Allow these sections to take up space, helping push actions down */
+}
+
+.cardOtherInfo {
+    padding-top: 18px;
+    border-top: 1px dashed #e5e7eb;
+}
+
+.infoRow,
+.infoRowFull {
+    display: flex;
+    /* align-items: center; Centering can be an issue if one element (like label) is fixed width and other wraps */
+    align-items: flex-start; /* Better for multi-line content next to labels */
+    gap: 12px;
+    font-size: 0.9rem;
+    color: #374151;
+    /* word-break: break-word; Handled by longTextDisplay specifically for those */
+    line-height: 1.5;
+}
+
+/* .infoRowFull {
+    align-items: flex-start; Already set above for both
+} */
+
+.infoRow label,
+.infoRowFull label {
+    font-weight: 500;
+    color: #4b5563;
+    flex-shrink: 0;
+    width: 100px; /* Keep for alignment */
+    margin-top: 1px; /* Slight adjustment for baseline alignment with text */
+}
+
+.inlineIcon {
+    color: #0ea5e9;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    width: 20px;
+    text-align: center;
+    margin-top: 2px; /* Align icon with first line of text */
+}
+
+.inlineIconTop { /* This is used for description/achievement, let's ensure its alignment */
+    color: #0ea5e9;
+    align-self: flex-start;
+    margin-top: 3px;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    width: 20px;
+    text-align: center;
+}
+
+.editInput,
+.editTextarea {
+    flex-grow: 1;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #1f2937;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    background-color: #f9fafb;
+}
+
+.editInput:focus,
+.editTextarea:focus {
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 0.1rem rgba(14, 165, 233, 0.2);
+    background-color: #fff;
+}
+
+.editTextarea {
+    resize: vertical;
+    min-height: 90px;
+    line-height: 1.5;
+}
+
+.longTextDisplay { /* Applied to description and achievement */
+    color: #374151;
+    flex-grow: 1;
+    line-height: 1.6;
+    font-size: 0.9rem;
+    min-height: calc(1.6em * 3); /* Reserve space for approx 3 lines */
+    /* CSS Line Clamp */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Show 3 lines */
+    -webkit-box-orient: vertical;
+    word-break: break-word; /* Allow long words to break and wrap */
+}
+
+
+.infoRow a,
+.infoRowFull a {
+    color: #0ea5e9;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+    word-break: break-all; /* For long URLs */
+}
+.infoRow a:hover,
+.infoRowFull a:hover {
+    color: #0c85c2;
+    text-decoration: underline;
+}
+.infoRow a svg,
+.infoRowFull a svg {
+    margin-bottom: -2px;
+}
+
+.recruitingStatusTrue {
+    color: #10b981;
+    font-weight: 600;
+    background-color: #ecfdf5;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.recruitingStatusFalse {
+    color: #f43f5e;
+    font-weight: 600;
+    background-color: #fff1f2;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+/* --- Actions --- */
+.cardActions { /* This section is now at the bottom due to flex-direction on .clubCard */
+    margin-top: auto; /* Pushes actions to the bottom if .clubCard is flex-column */
+    padding-top: 20px;
+    border-top: 1px solid #f3f4f6;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.editButton,
+.saveButton,
+.cancelButton {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    transition: background-color 0.2s ease, opacity 0.2s ease, transform 0.1s ease;
+    min-width: 90px;
+}
+.editButton:active:not(:disabled),
+.saveButton:active:not(:disabled),
+.cancelButton:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+.editButton {
+    background-color: #f59e0b;
+    color: #fff;
+}
+.editButton:hover:not(:disabled) {
+    background-color: #d97706;
+}
+
+.saveButton {
+    background-color: #10b981;
+    color: #fff;
+}
+.saveButton:hover:not(:disabled) {
+    background-color: #059669;
+}
+
+.saveButton:disabled {
+    background-color: #d1fae5;
+    color: #6ee7b7;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.cancelButton {
+    background-color: #ef4444;
+    color: #fff;
+}
+.cancelButton:hover:not(:disabled) {
+    background-color: #dc2626;
+}
+.cancelButton:disabled {
+    background-color: #fee2e2;
+    color: #fca5a5;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.cardActions .loadingSpinner {
+    animation: spin 1s linear infinite;
+    font-size: 1em;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) { /* Medium devices and below (tablets) */
+    .manageClubsContainer {
+        padding: 20px;
+    }
+    /* Keep 2 columns for tablets if wide enough, or switch to 1 if preferred */
+    /* .clubsGrid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Or adjust to 1 column sooner if needed */
+    /* } */
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    .searchBar,
+    .filters {
+        width: 100%;
+        flex-grow: 0;
+    }
+    .filters {
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .filterGroup {
+        flex-grow: 1;
+        justify-content: space-between;
+        padding: 0 12px;
+    }
+    .filterSelect {
+        min-width: auto;
+        flex-grow: 1;
+    }
+    .refreshButton {
+        width: 100%;
+        justify-content: center;
+    }
+    .clubCard {
+        padding: 18px;
+    }
+    .clubName {
+        font-size: 1.4rem;
+    }
+    .infoRow label, .infoRowFull label {
+        width: 90px;
+    }
+}
+
+@media (max-width: 768px) { /* Small devices (tablets in portrait, large phones) */
+    .manageClubsContainer h2 {
+        font-size: 2rem;
+    }
+    .clubsGrid { /* Switch to 1 column for smaller tablets / large phones */
+        grid-template-columns: 1fr;
+    }
+    .statusCountsSection {
+        grid-template-columns: 1fr;
+    }
+    .clubCard {
+        padding: 15px;
+    }
+    .cardHeader {
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
+    .infoRow, .infoRowFull {
+        gap: 8px;
+        font-size: 0.85rem;
+    }
+    .infoRow label, .infoRowFull label {
+        width: auto; /* Let labels flow on smaller screens */
+        font-weight: 600;
+    }
+    .cardActions {
+        flex-direction: column;
+    }
+    .editButton, .saveButton, .cancelButton {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) { /* Extra small devices (phones) */
+    .manageClubsContainer {
+        padding: 15px;
+    }
+    .manageClubsContainer h2 {
+        font-size: 1.8rem;
+    }
+    /* .clubsGrid is already 1fr from 768px breakpoint */
+    .clubName {
+        font-size: 1.3rem;
+    }
+    .controls {
+        padding: 15px;
+    }
+    .searchBar, .filterGroup, .refreshButton {
+        height: 45px;
+    }
+    .editInput, .editTextarea {
+        font-size: 0.9rem;
+    }
+    .infoRow, .infoRowFull {
+        font-size: 0.8rem;
+    }
+    .cardActions button {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+    .longTextDisplay {
+        -webkit-line-clamp: 2; /* Show 2 lines on very small screens if 3 is too much */
+        min-height: calc(1.6em * 2);
+    }
+}
