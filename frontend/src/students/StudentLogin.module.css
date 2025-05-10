@@ -1,0 +1,121 @@
+.studentLoginBody {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #4e54c8, #8f94fb); /* Keep the same theme or adjust the colors */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.studentLoginContainer {
+    background: #fff;
+    padding: 40px 50px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.studentLoginContainer__img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.studentLoginContainer__h2 {
+    margin-bottom: 30px;
+    font-size: 2em;
+    color: #333;
+}
+
+.studentLoginContainer__inputGroup {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.studentLoginContainer__inputGroup__input {
+    width: 100%;
+    padding: 15px 0px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    background: #f9f9f9;
+    transition: border-color 0.3s;
+}
+
+.studentLoginContainer__inputGroup__input:focus {
+    border-color: #4e54c8;
+}
+
+.studentLoginContainer__inputGroup__label {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    font-size: 0.9em;
+    color: #aaa;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.studentLoginContainer__inputGroup__input:focus + .studentLoginContainer__inputGroup__label,
+.studentLoginContainer__inputGroup__input:not(:placeholder-shown) + .studentLoginContainer__inputGroup__label {
+    top: -12px;
+    left: 20px;
+    font-size: 0.9em;
+    color: #4e54c8;
+}
+
+.studentLoginContainer__options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.studentLoginContainer__options__a {
+    text-decoration: none;
+    color: #4e54c8;
+    transition: color 0.3s;
+}
+
+.studentLoginContainer__options__a:hover {
+    color: #333;
+}
+
+.studentLoginContainer__button {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1.1em;
+    background: #4e54c8;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.studentLoginContainer__button:hover {
+    background: #3c42b3;
+}
+
+.studentLoginContainer__register {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.studentLoginContainer__register__a {
+    text-decoration: none;
+    color: #4e54c8;
+}
+
+.studentLoginContainer__register__a:hover {
+    text-decoration: underline;
+}
