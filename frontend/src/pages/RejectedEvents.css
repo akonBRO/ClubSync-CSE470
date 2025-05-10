@@ -1,0 +1,29 @@
+/* Optional styles specific to RejectedEventsPage.css */
+
+/* Add a subtle border or different header to rejected cards */
+.event-card.rejected-card {
+    border-left: 5px solid var(--danger-color); /* Red left border */
+}
+
+/* Style for the comments section */
+.event-comments {
+    align-items: flex-start; /* Align icon top */
+    background-color: #fff3cd; /* Light yellow background */
+    border: 1px solid #ffeeba;
+    padding: 0.75rem;
+    border-radius: var(--border-radius);
+    margin-top: 0.75rem;
+}
+.event-comments p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #856404; /* Dark yellow text */
+}
+.event-comments strong {
+    color: #66512c;
+}
+.event-comments svg {
+    color: #856404;
+    margin-top: 2px; /* Align icon better with text */
+}
