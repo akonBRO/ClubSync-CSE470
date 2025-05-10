@@ -1,0 +1,494 @@
+/* Global Styles */
+.dashboardMain {
+  background-color: #f4f7f6; /* Light background */
+  min-height: 100vh;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif; /* Using Poppins as per sidebar theme */
+  color: #4A5568; /* Default text color */
+}
+
+.dashboardContainerInner {
+  max-width: 1550px; /* Slightly larger max-width */
+  margin: 0 auto;
+}
+
+/* Loading and Error Styles */
+.loadingContainer,
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh; /* Occupy most of the viewport */
+  font-size: 1.5rem;
+  color: #718096;
+  text-align: center;
+}
+
+.loadingSpinner {
+  border: 8px solid #E2E8F0;
+  border-top: 8px solid #3751FF; /* Primary color from sidebar */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loadingText {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.errorContainer {
+  color: #E53E3E; /* Red color for error */
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.softError {
+  background-color: #fff0f0; /* Light red background */
+  color: #c53030; /* Darker red text */
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #fed7d7; /* Red border */
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+
+/* Header */
+.header {
+  background-color: #FFFFFF;
+  padding: 25px 30px; /* Increased padding */
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px; /* Increased margin */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Stronger shadow */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 20px; /* Gap between header sections */
+}
+
+.headerWelcome {
+  display: flex;
+  flex-direction: column;
+}
+
+.wavingHandIcon {
+  font-size: 1.5rem;
+  color: #f6ad55; /* Warm color for icon */
+  margin-right: 10px;
+  animation: wave 2s infinite; /* Subtle waving animation */
+  display: inline-block; /* Ensure animation works */
+}
+
+@keyframes wave {
+  0% { transform: rotate( 0.0deg) }
+  10% { transform: rotate(14.0deg) }
+  20% { transform: rotate(-8.0deg) }
+  30% { transform: rotate(14.0deg) }
+  40% { transform: rotate(-4.0deg) }
+  50% { transform: rotate(10.0deg) }
+  60% { transform: rotate( 0.0deg) }
+  100% { transform: rotate( 0.0deg) }
+}
+
+
+.headerWelcome span {
+  font-size: 1.8rem; /* Larger welcome text */
+  font-weight: 700;
+  color: #2D3748;
+  display: flex;
+  align-items: center;
+}
+
+.headerSubtitle {
+  font-size: 1rem;
+  color: #718096;
+  margin-top: 5px;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap; /* Allow wrapping */
+}
+
+.searchBar {
+  background-color: #F7FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  flex-grow: 1; /* Allow search bar to grow */
+  max-width: 300px; /* Max width for search on larger screens */
+  transition: all 0.3s ease;
+}
+
+.searchBar:focus-within {
+  border-color: #3751FF; /* Highlight on focus */
+  box-shadow: 0 0 0 3px rgba(55, 81, 255, 0.1);
+}
+
+.searchIcon {
+  color: #A0AEC0;
+  margin-right: 10px;
+}
+
+.searchInput {
+  border: none;
+  background-color: transparent;
+  flex-grow: 1;
+  color: #4A5568;
+  font-size: 1rem;
+}
+
+.searchInput::placeholder {
+   color: #A0AEC0;
+}
+
+.searchInput:focus {
+  outline: none;
+}
+
+.uploadButton {
+  background-color: #3751FF; /* Primary color from sidebar */
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px; /* Increased padding */
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+}
+
+.uploadButton:hover {
+  background-color: #2a41d5; /* Darker primary color */
+  transform: translateY(-2px);
+}
+
+.notificationIcon,
+.userProfileIcon {
+  position: relative;
+  font-size: 1.6rem; /* Larger icons */
+  color: #A0AEC0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.notificationIcon:hover,
+.userProfileIcon:hover {
+  color: #3751FF; /* Primary color on hover */
+}
+
+
+.notificationBadge {
+  position: absolute;
+  top: -8px; /* Adjusted position */
+  right: -8px; /* Adjusted position */
+  background-color: #E53E3E; /* Red badge */
+  color: #FFFFFF;
+  font-size: 0.75rem; /* Slightly larger badge text */
+  font-weight: 700;
+  border-radius: 50%;
+  width: 20px; /* Larger badge */
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #FFFFFF; /* White border */
+}
+
+/* Dashboard Grid & Cards */
+.statsOverview {
+  margin-bottom: 30px;
+}
+
+.sectionTitle {
+  font-size: 1.5rem; /* Larger section titles */
+  font-weight: 700;
+  color: #2D3748;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sectionTitleIcon {
+  color: #3751FF; /* Primary color for section icons */
+}
+
+
+.statsGrid {
+  display: grid;
+  gap: 25px; /* Increased gap */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+}
+
+.dashboardCard {
+  background-color: #FFFFFF;
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Consistent shadow */
+  padding: 25px; /* Increased padding */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboardCard:hover {
+  transform: translateY(-5px); /* Lift on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Stronger shadow on hover */
+}
+
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #718096;
+  font-size: 1rem; /* Slightly larger card header text */
+  margin-bottom: 15px;
+}
+
+.cardIcon {
+  font-size: 1.5rem; /* Larger card icons */
+  color: #3751FF; /* Primary color for card icons */
+}
+
+.cardTitle {
+  font-weight: 600;
+  color: #2D3748; /* Darker title color */
+}
+
+.cardValue {
+  font-size: 2.5rem; /* Much larger value */
+  font-weight: 700;
+  color: #2D3748;
+  margin-bottom: 10px; /* Space below value */
+}
+
+.balanceCard .cardValue {
+   font-size: 2rem; /* Slightly smaller for currency */
+   color: #22c55e; /* Green for balance */
+}
+
+
+.cardTrend {
+  font-size: 0.9rem;
+  color: #718096; /* Muted color for trend text */
+  margin-top: auto; /* Push trend to the bottom */
+}
+
+.cardLink {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 15px; /* Space above link */
+  color: #3751FF; /* Primary color */
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  align-self: flex-start; /* Align link to the left */
+}
+
+.cardLink:hover {
+  text-decoration: underline;
+}
+
+.cardLinkArrow {
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+}
+.cardLink:hover .cardLinkArrow {
+  transform: translateX(3px);
+}
+
+/* Additional Sections Layout */
+.additionalSections {
+  display: grid;
+  gap: 30px; /* Gap between additional sections */
+  grid-template-columns: 1fr; /* Default to single column */
+}
+
+@media (min-width: 768px) { /* Two columns on medium screens */
+  .additionalSections {
+      grid-template-columns: 2fr 1fr; /* Activity takes more space */
+  }
+}
+
+/* Recent Activity Card */
+.recentActivityCard {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.activityList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1; /* Allow list to take up space */
+}
+
+.activityItem {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #E2E8F0;
+  font-size: 0.95rem;
+  color: #4A5568;
+}
+
+.activityItem:last-child {
+  border-bottom: none;
+}
+
+.activityTypeBadge {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  color: #FFFFFF;
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  flex-shrink: 0; /* Prevent badge from shrinking */
+}
+
+.activityTypeBadge.applicant { background-color: #4299e1; } /* Blue */
+.activityTypeBadge.event { background-color: #667eea; } /* Indigo */
+.activityTypeBadge.announcement { background-color: #ed64a6; } /* Pink */
+.activityTypeBadge.finance { background-color: #38a169; } /* Green */
+
+.noActivity {
+  text-align: center;
+  color: #A0AEC0;
+  padding: 20px;
+  font-style: italic;
+}
+
+.viewAllButton {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 20px;
+  color: #3751FF;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  align-self: flex-start; /* Align to the left */
+}
+.viewAllButton:hover {
+  text-decoration: underline;
+}
+
+
+/* Quick Actions Card */
+.quickActionsCard {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.quickActionsGrid {
+  display: grid;
+  gap: 15px; /* Gap between action buttons */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive actions */
+  flex-grow: 1; /* Allow grid to take up space */
+}
+
+.quickActionButton {
+  background-color: #E9F0FF; /* Light background, similar to sidebar support card */
+  color: #3751FF; /* Primary color */
+  border: 1px solid #c3d5ff; /* Lighter border */
+  border-radius: 8px;
+  padding: 15px 10px;
+  display: flex;
+  flex-direction: column; /* Stack icon and text */
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.1s ease;
+  text-align: center;
+}
+
+.quickActionButton:hover {
+  background-color: #d0e0ff; /* Slightly darker light background */
+  border-color: #a3c1ff; /* Darker border */
+  transform: translateY(-3px); /* Lift on hover */
+}
+
+.quickActionButton svg {
+  font-size: 1.8rem; /* Larger icon in quick actions */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+  .header {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+  .headerActions {
+      width: 100%;
+      justify-content: space-between;
+      margin-top: 15px;
+  }
+  .searchBar {
+      flex-grow: 1;
+      max-width: none; /* Allow search bar to take full width */
+  }
+  .uploadButton {
+       flex-grow: 1;
+       justify-content: center;
+  }
+  .notificationIcon,
+  .userProfileIcon {
+      flex-shrink: 0; /* Prevent icons from shrinking */
+  }
+  .statsGrid {
+      grid-template-columns: 1fr; /* Single column on small screens */
+  }
+  .quickActionsGrid {
+       grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Smaller min width for actions */
+  }
+  .sectionTitle {
+      font-size: 1.3rem;
+  }
+   .cardValue {
+       font-size: 2rem;
+   }
+}
