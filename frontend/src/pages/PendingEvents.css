@@ -1,0 +1,240 @@
+.pending-events-container.modern {
+    padding: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f9fc;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.pending-events-title.modern {
+    color: #2c3e50;
+    margin-bottom: 30px;
+    text-align: left;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+.no-pending-events.modern {
+    color: #7f8c8d;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+    border: 1px dashed #bdc3c7;
+    border-radius: 8px;
+    background-color: #ecf0f1;
+}
+
+.pending-events-list.modern {
+    list-style: none;
+    padding: 0;
+}
+
+.pending-event-item.modern {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    padding: 25px;
+    border-left: 5px solid #3498db; /* Accent color */
+    transition: transform 0.2s ease-in-out;
+}
+
+.pending-event-item.modern:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.07);
+}
+
+.event-header.modern {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.serial-number.modern {
+    font-size: 1.4rem;
+    color: #3498db;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.event-name.modern {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    font-weight: 500;
+    flex-grow: 1;
+}
+
+.status-tag.pending.modern {
+    background-color: #f39c12; /* Orange for pending */
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.status-tag.pending.modern svg {
+    margin-right: 5px;
+}
+
+.event-details-grid.modern {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.detail-item.modern {
+    color: #555;
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+}
+
+.detail-item.modern svg {
+    margin-right: 8px;
+    color: #7f8c8d;
+}
+
+.details-long.modern,
+.comments-long.modern {
+    grid-column: 1 / -1; /* Span across all columns */
+    margin-top: 10px;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.comments-long.modern strong {
+    font-weight: bold;
+    color: #333;
+    margin-right: 5px;
+}
+
+.event-actions.modern {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.budget-button.modern,
+.delete-button.modern {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.budget-button.modern {
+    background-color: #27ae60; /* Green */
+}
+
+.budget-button.modern:hover {
+    background-color: #218c52;
+}
+
+.delete-button.modern {
+    background-color: #e74c3c; /* Red */
+}
+
+.delete-button.modern:hover {
+    background-color: #c0392b;
+}
+
+.budget-button.modern svg,
+.delete-button.modern svg {
+    margin-right: 8px;
+}
+
+.loading-modern {
+    text-align: center;
+    padding: 40px;
+    color: #7f8c8d;
+    font-size: 1.1rem;
+}
+
+.error-modern {
+    text-align: center;
+    padding: 40px;
+    color: #c0392b;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Add these styles to PendingEvents.css if not already present */
+
+/* Header */
+.approved-events-header.modern { /* Reuse class for consistency */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #dee2e6; /* Use var(--border-color) if defined */
+  }
+  
+  /* Search Bar */
+  .search-bar.modern { /* Reuse class */
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .search-icon.modern { /* Reuse class */
+    position: absolute;
+    left: 0.8rem;
+    color: #6c757d; /* Use var(--secondary-color) */
+    pointer-events: none;
+  }
+  
+  .search-input.modern { /* Reuse class */
+    padding: 0.6rem 0.8rem 0.6rem 2.5rem;
+    font-size: 1rem;
+    border: 1px solid #ced4da; /* Use var(--input-border) */
+    border-radius: 0.3rem; /* Use var(--border-radius) */
+    min-width: 250px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  .search-input.modern:focus {
+    border-color: #86b7fe; /* Use var(--input-focus-border) */
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); /* Use var(--input-focus-shadow) */
+  }
+  
+  /* Loading & Alert Styles (Ensure these or similar exist) */
+  .loading-container.modern { /* Reuse class */
+    display: flex; justify-content: center; align-items: center; padding: 3rem;
+    font-size: 1.2rem; font-weight: 500; color: #6c757d; gap: 0.75rem;
+  }
+  .spinner.modern { animation: spin 1.5s linear infinite; }
+  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  
+  .alert.modern { /* Base alert class */
+      padding: 1rem 1.25rem; margin-bottom: 1.5rem; border: 1px solid transparent;
+      border-radius: 0.3rem; display: flex; align-items: center; gap: 0.75rem; font-weight: 500;
+  }
+  .alert-error.modern { /* Reuse class */
+       color: #721c24; background-color: #f8d7da; border-color: #f5c6cb;
+  }
+  
+  /* Style for Budget status tag */
+  .status-tag.budget {
+      background-color: #17a2b8; /* Teal for Budget status */
+      color: white;
+  }
+  .status-tag.budget svg {
+      margin-right: 5px;
+  }
+  
+  /* Ensure other styles from previous CSS are present or adjusted */
