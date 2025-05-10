@@ -1,0 +1,766 @@
+/* Add Google Fonts link for Poppins in your index.html or equivalent */
+/* <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"> */
+
+/* --- CSS Variables for easy color management --- */
+:root {
+    --primary-color: #4a00e0; /* Deep Purple */
+    --secondary-color: #8e2de2; /* Lighter Purple */
+    --accent-color: #00c6ff; /* Bright Blue */
+    --white: #fff;
+    --black: #000;
+    --light-grey: #f8f9fa;
+    --dark-text: #333;
+    --light-text: #eee;
+    --gradient-hero: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    --gradient-body: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  }
+  
+  /* --- General Styles --- */
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: var(--dark-text); /* Default text color for light sections */
+    line-height: 1.6;
+    background: var(--gradient-body);
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    scroll-behavior: smooth; /* Smooth scrolling for section links */
+  }
+  
+  .clubsync-app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1; /* Ensure content is above background */
+  }
+  
+  .clubsync-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  /* --- Navbar --- */
+  .clubsync-navbar {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+    padding: 15px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Stronger shadow */
+    backdrop-filter: blur(15px); /* More frosted glass effect */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .clubsync-navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .clubsync-navbar-brand {
+    font-weight: 800; /* Extra Bolder */
+    font-size: 2.2rem; /* Larger */
+    color: var(--white);
+    text-decoration: none;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: color 0.4s ease-in-out; /* Smoother transition */
+  }
+  
+  .clubsync-navbar-brand:hover {
+    color: var(--accent-color);
+  }
+  
+  .clubsync-nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px; /* Space between links */
+  }
+  
+  .clubsync-nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .clubsync-nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--accent-color);
+    transition: width 0.4s ease-in-out; /* Underline animation */
+  }
+  
+  .clubsync-nav-links a:hover {
+    color: var(--accent-color);
+  }
+  
+  .clubsync-nav-links a:hover::after {
+    width: 100%;
+  }
+  
+  
+  /* --- Hero Section --- */
+  .clubsync-hero-section {
+    text-align: center;
+    padding: 120px 20px; /* More padding */
+    background: var(--gradient-hero);
+    position: relative;
+    overflow: hidden;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    min-height: 92vh; /* Ensure it takes at least 80% of viewport height */
+  }
+  
+  /* Hero Background Animation (Bubbles) */
+  .clubsync-background-bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    opacity: 0.6; /* Slightly less opaque */
+  }
+  
+  .clubsync-background-bubbles span {
+    position: absolute;
+    display: block;
+    background: rgba(255, 255, 255, 0.15); /* Slightly more visible */
+    animation: moveBubbles linear infinite;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  
+  /* Adjust animation for more variation */
+  .clubsync-background-bubbles span:nth-child(1) { top: 10%; left: 15%; width: 30px; height: 30px; animation-delay: 0s; animation-duration: 15s; }
+  .clubsync-background-bubbles span:nth-child(2) { top: 40%; left: 60%; width: 40px; height: 40px; animation-delay: 2s; animation-duration: 18s; }
+  .clubsync-background-bubbles span:nth-child(3) { top: 70%; left: 20%; width: 25px; height: 25px; animation-delay: 4s; animation-duration: 12s; }
+  .clubsync-background-bubbles span:nth-child(4) { top: 90%; left: 50%; width: 50px; height: 50px; animation-delay: 6s; animation-duration: 20s; }
+  .clubsync-background-bubbles span:nth-child(5) { top: 25%; left: 80%; width: 35px; height: 35px; animation-delay: 1s; animation-duration: 16s; }
+  .clubsync-background-bubbles span:nth-child(6) { top: 65%; left: 10%; width: 45px; height: 45px; animation-delay: 3s; animation-duration: 19s; }
+  .clubsync-background-bubbles span:nth-child(7) { top: 50%; left: 90%; width: 20px; height: 20px; animation-delay: 5s; animation-duration: 14s; }
+  .clubsync-background-bubbles span:nth-child(8) { top: 80%; left: 30%; width: 30px; height: 30px; animation-delay: 7s; animation-duration: 17s; }
+  .clubsync-background-bubbles span:nth-child(9) { top: 15%; left: 70%; width: 40px; height: 40px; animation-delay: 8s; animation-duration: 21s; }
+  .clubsync-background-bubbles span:nth-child(10) { top: 30%; left: 5%; width: 25px; height: 25px; animation-delay: 9s; animation-duration: 13s; }
+  .clubsync-background-bubbles span:nth-child(11) { top: 75%; left: 75%; width: 35px; height: 35px; animation-delay: 10s; animation-duration: 18s; }
+  .clubsync-background-bubbles span:nth-child(12) { top: 5%; left: 40%; width: 50px; height: 50px; animation-delay: 11s; animation-duration: 22s; }
+  .clubsync-background-bubbles span:nth-child(13) { top: 95%; left: 10%; width: 20px; height: 20px; animation-delay: 12s; animation-duration: 15s; }
+  .clubsync-background-bubbles span:nth-child(14) { top: 20%; left: 55%; width: 45px; height: 45px; animation-delay: 13s; animation-duration: 19s; }
+  .clubsync-background-bubbles span:nth-child(15) { top: 60%; left: 5%; width: 30px; height: 30px; animation-delay: 14s; animation-duration: 16s; }
+  .clubsync-background-bubbles span:nth-child(16) { top: 85%; left: 90%; width: 40px; height: 40px; animation-delay: 15s; animation-duration: 20s; }
+  .clubsync-background-bubbles span:nth-child(17) { top: 45%; left: 30%; width: 25px; height: 25px; animation-delay: 16s; animation-duration: 14s; }
+  .clubsync-background-bubbles span:nth-child(18) { top: 10%; left: 95%; width: 35px; height: 35px; animation-delay: 17s; animation-duration: 17s; }
+  
+  @keyframes moveBubbles {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
+    100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
+  }
+  
+  .clubsync-hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1000px; /* Increased content width */
+  }
+  
+  .clubsync-hero-title {
+    font-size: 5rem; /* Even larger title */
+    font-weight: 800;
+    margin-bottom: 25px;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    line-height: 1.1;
+  }
+  
+  .brand-highlight {
+    color: var(--accent-color);
+  }
+  
+  .clubsync-hero-subtitle {
+    font-size: 1.7rem; /* Larger subtitle */
+    margin-bottom: 60px;
+    opacity: 0.95;
+    font-weight: 400;
+  }
+  
+  .clubsync-login-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Increased gap */
+    margin-top: 40px;
+  }
+  
+  .clubsync-button-link {
+    text-decoration: none;
+  }
+  
+  .clubsync-button {
+    padding: 16px 35px; /* More padding */
+    font-size: 1.3rem; /* Larger font */
+    font-weight: 600;
+    border: none;
+    border-radius: 40px; /* More rounded */
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+    display: inline-flex;
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 1px;
+  }
+  
+  .primary-button {
+    background: var(--accent-color);
+    color: var(--primary-color);
+  }
+  
+  .secondary-button {
+    background: var(--white);
+    color: var(--secondary-color);
+  }
+  
+  .clubsync-button:hover {
+    transform: translateY(-7px); /* More prominent hover effect */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); /* Stronger hover shadow */
+  }
+  
+  .primary-button:hover {
+    background: #00b3e6; /* Slightly darker accent */
+    color: var(--primary-color);
+  }
+  
+  .secondary-button:hover {
+    background: #f0f0f0;
+    color: var(--primary-color); /* Change color on hover */
+  }
+  
+  
+  /* --- Section Titles --- */
+  .clubsync-section-title {
+    font-size: 3.5rem; /* Larger title */
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 70px; /* More space below title */
+    position: relative;
+    padding-bottom: 20px; /* More space for underline */
+    color: var(--primary-color);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .clubsync-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px; /* Wider underline */
+    height: 6px; /* Thicker underline */
+    background-color: var(--secondary-color);
+    border-radius: 3px;
+  }
+  
+  .clubsync-section-title.white-text {
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .clubsync-section-title.white-text::after {
+    background-color: var(--accent-color);
+  }
+  
+  
+  /* --- Features Section --- */
+  .clubsync-features-section {
+    padding: 100px 0; /* More padding */
+    background-color: var(--white);
+  }
+  
+  .clubsync-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly larger minimum width */
+    gap: 40px; /* More space between items */
+  }
+  
+  .clubsync-feature-item {
+    background: var(--light-grey);
+    padding: 40px; /* More padding */
+    border-radius: 15px; /* More rounded */
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out, background-color 0.3s ease;
+    cursor: pointer; /* Indicate interactivity */
+    height: 100%; /* Ensure equal height in grid */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to top */
+    align-items: center;
+  }
+  
+  .clubsync-feature-item:hover {
+    transform: translateY(-12px); /* More prominent hover */
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+    background-color: #e9ecef; /* Slightly darker on hover */
+  }
+  
+  .clubsync-feature-icon {
+    color: var(--secondary-color);
+    margin-bottom: 25px;
+    transition: color 0.3s ease;
+  }
+  
+  .clubsync-feature-item:hover .clubsync-feature-icon {
+    color: var(--primary-color); /* Change icon color on hover */
+  }
+  
+  
+  .clubsync-feature-title {
+    font-size: 1.8rem; /* Larger title */
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+  }
+  
+  .clubsync-feature-description {
+    font-size: 1.1rem; /* Larger description */
+    color: #555;
+    line-height: 1.7;
+  }
+  
+  
+  /* --- Info/About Section --- */
+  .clubsync-info-section {
+    padding: 80px 0; /* Padding top and bottom */
+    background-color: var(--light-grey); /* Different background for visual separation */
+  }
+  
+  .clubsync-info-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px; /* Space below section title (if added here) */
+  }
+  
+  .clubsync-info-box {
+    background: var(--white);
+    padding: 35px; /* More padding */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .clubsync-info-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  
+  .clubsync-info-icon {
+    color: var(--accent-color); /* Accent color for icons */
+    margin-bottom: 20px;
+  }
+  
+  .clubsync-info-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+  }
+  
+  .clubsync-info-text {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.7;
+  }
+  
+  
+  /* --- Testimonials Section (Carousel) --- */
+  .clubsync-carousel-section {
+    background: var(--primary-color);
+    padding: 100px 20px; /* More padding */
+    color: var(--white);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .clubsync-carousel-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .clubsync-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 900px; /* Wider carousel */
+    margin: 40px auto 30px auto;
+    overflow: hidden;
+    padding: 0 70px; /* More padding for controls */
+  }
+  
+  .clubsync-carousel-text {
+    min-height: 150px; /* Ensure minimum height to prevent jumping */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .clubsync-carousel-quote {
+    font-size: 2rem; /* Larger quote */
+    font-weight: 500;
+    margin-bottom: 25px;
+    font-style: italic;
+    position: relative;
+    opacity: 0; /* Start hidden for animation */
+    transition: opacity 0.8s ease-in-out; /* Fade transition */
+  }
+  
+  .clubsync-carousel-quote.fade-in {
+    opacity: 1; /* Fade in state */
+  }
+  
+  .clubsync-carousel-author {
+    font-size: 1.3rem; /* Larger author */
+    opacity: 0.95;
+  }
+  
+  .clubsync-carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.3); /* More visible background */
+    padding: 15px; /* Larger controls */
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+  }
+  
+  .clubsync-carousel-control.prev {
+    left: 10px; /* Adjusted position */
+  }
+  
+  .clubsync-carousel-control.next {
+    right: 10px; /* Adjusted position */
+  }
+  
+  
+  .clubsync-carousel-control:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateY(-50%) scale(1.1); /* Add scale effect on hover */
+  }
+  
+  .clubsync-carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px; /* More space */
+    gap: 12px; /* More space */
+  }
+  
+  .clubsync-dot {
+    width: 12px; /* Larger dot */
+    height: 12px; /* Larger dot */
+    background-color: rgba(255, 255, 255, 0.4); /* Less visible when inactive */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .clubsync-dot.active {
+    background-color: var(--accent-color);
+    transform: scale(1.3); /* More prominent active state */
+  }
+  
+  .clubsync-dot:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  
+  
+  /* --- Footer --- */
+  .clubsync-footer {
+    text-align: center;
+    padding: 40px; /* More padding */
+    background: var(--primary-color);
+    color: rgba(255, 255, 255, 0.9); /* Slightly more opaque white */
+    font-size: 1rem;
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Subtle top border */
+  }
+  
+  
+  /* --- Responsive Adjustments --- */
+  @media (max-width: 1200px) {
+    .clubsync-container {
+      padding: 0 1rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .clubsync-hero-title {
+      font-size: 4rem;
+    }
+  
+    .clubsync-hero-subtitle {
+      font-size: 1.5rem;
+    }
+  
+    .clubsync-section-title {
+      font-size: 3rem;
+    }
+  
+    .clubsync-features-grid,
+    .clubsync-info-container {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted min width */
+    }
+  
+    .clubsync-feature-item,
+    .clubsync-info-box {
+      padding: 30px; /* Adjusted padding */
+    }
+  
+    .clubsync-feature-title,
+    .clubsync-info-title {
+      font-size: 1.6rem;
+    }
+  
+    .clubsync-carousel-quote {
+      font-size: 1.8rem;
+    }
+  
+    .clubsync-carousel-author {
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .clubsync-navbar-content {
+        flex-direction: column; /* Stack items */
+        gap: 15px;
+    }
+    .clubsync-nav-links {
+        gap: 15px; /* Closer links */
+        font-size: 1rem;
+    }
+    .clubsync-nav-links a::after {
+        height: 2px; /* Thinner underline */
+        bottom: -3px;
+    }
+  
+  
+    .clubsync-hero-section {
+      padding: 100px 15px;
+      min-height: 70vh;
+    }
+  
+    .clubsync-hero-title {
+      font-size: 3.2rem;
+    }
+  
+    .clubsync-hero-subtitle {
+      font-size: 1.3rem;
+    }
+  
+    .clubsync-login-buttons {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .clubsync-button {
+      padding: 14px 30px;
+      font-size: 1.2rem;
+      width: 90%; /* Make buttons wider */
+      max-width: 350px; /* Limit max width */
+      margin: 0 auto; /* Center buttons */
+    }
+  
+    .clubsync-section-title {
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+    }
+  
+    .clubsync-features-section,
+    .clubsync-info-section,
+    .clubsync-carousel-section {
+      padding: 80px 15px;
+    }
+  
+    .clubsync-features-grid,
+    .clubsync-info-container {
+      gap: 25px;
+    }
+  
+    .clubsync-feature-item,
+    .clubsync-info-box {
+        padding: 25px;
+    }
+  
+    .clubsync-feature-icon svg,
+    .clubsync-info-icon svg {
+        width: 35px;
+        height: 35px;
+    }
+  
+  
+    .clubsync-feature-title,
+    .clubsync-info-title {
+      font-size: 1.4rem;
+    }
+  
+    .clubsync-carousel {
+      padding: 0 50px;
+    }
+  
+    .clubsync-carousel-control {
+      padding: 12px;
+    }
+    .clubsync-carousel-control.prev { left: 0; }
+    .clubsync-carousel-control.next { right: 0; }
+  
+  
+    .clubsync-carousel-quote {
+      font-size: 1.6rem;
+    }
+  
+    .clubsync-carousel-author {
+      font-size: 1.1rem;
+    }
+  
+    .clubsync-footer {
+        padding: 30px;
+    }
+  
+  }
+  
+  @media (max-width: 480px) {
+    .clubsync-container {
+      padding: 0 0.8rem; /* Less padding */
+    }
+  
+    .clubsync-navbar-brand {
+        font-size: 1.8rem;
+    }
+  
+    .clubsync-nav-links {
+        gap: 10px;
+        font-size: 0.9rem;
+    }
+  
+  
+    .clubsync-hero-section {
+      padding: 80px 10px;
+      min-height: 60vh;
+    }
+  
+    .clubsync-hero-title {
+      font-size: 2.5rem;
+    }
+  
+    .clubsync-hero-subtitle {
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
+  
+    .clubsync-login-buttons {
+      gap: 15px;
+    }
+  
+    .clubsync-button {
+      font-size: 1.1rem;
+      padding: 12px 25px;
+      width: 100%;
+      max-width: 300px;
+    }
+  
+    .clubsync-section-title {
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+    .clubsync-section-title::after {
+        width: 80px;
+        height: 4px;
+    }
+  
+  
+    .clubsync-features-section,
+    .clubsync-info-section,
+    .clubsync-carousel-section {
+      padding: 60px 10px;
+    }
+  
+    .clubsync-features-grid,
+    .clubsync-info-container {
+      gap: 20px;
+    }
+  
+    .clubsync-feature-item,
+    .clubsync-info-box {
+      padding: 20px;
+    }
+  
+    .clubsync-feature-icon svg,
+    .clubsync-info-icon svg {
+      width: 30px;
+      height: 30px;
+    }
+  
+  
+    .clubsync-feature-title,
+    .clubsync-info-title {
+      font-size: 1.3rem;
+    }
+  
+    .clubsync-carousel {
+      padding: 0 40px;
+    }
+  
+    .clubsync-carousel-quote {
+        text-shadow: var(--black);
+      font-size: 1.4rem;
+      min-height: 120px;
+    }
+    .clubsync-carousel-author {
+      font-size: 1rem;
+    }
+  
+    .clubsync-carousel-control {
+      padding: 8px;
+    }
+    .clubsync-carousel-control svg {
+      width: 20px;
+      height: 20px;
+    }
+  
+    .clubsync-dot {
+      width: 10px;
+      height: 10px;
+    }
+  
+    .clubsync-footer {
+      padding: 25px;
+      font-size: 0.9rem;
+    }
+  }
