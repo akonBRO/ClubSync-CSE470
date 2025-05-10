@@ -7,8 +7,8 @@ import ClubRegister from './pages/ClubRegister';
 import ClubLogin from './pages/ClubLogin';
 import StudentLogin from './students/StudentLogin';
 import StudentClubsPage from './students/StudentClubsPage';
-import MyClubsPage from './students/MyClubsPage'; // Placeholder
-import JoinClubsPage from './students/JoinClubsPage'; // Placeholder
+import MyClubsPage from './students/MyClubsPage'; 
+import JoinClubsPage from './students/JoinClubsPage'; 
 import ClubSidebar from './pages/ClubSidebar';
 import StudentSidebar from './students/StudentSidebar';
 import ClubDashboard from './pages/ClubDashboard';
@@ -27,12 +27,12 @@ import ClubSettings from './pages/ClubSettings';
 import BudgetPage from './pages/BudgetPage';
 import RecruitmentEvaluationPage from './pages/EvaluateApplicants';
 import AdminLogin from './admin/AdminLogin';
-import AdminSidebar from './admin/AdminSidebar'; // Create this component
-import AdminDashboard from './admin/AdminDashboard'; // Placeholder
-import ManageStudents from './admin/ManageStudents'; // Placeholder
-import ManageClubs from './admin/ManageClubs'; // Placeholder
+import AdminSidebar from './admin/AdminSidebar'; 
+import AdminDashboard from './admin/AdminDashboard'; 
+import ManageStudents from './admin/ManageStudents'; 
+import ManageClubs from './admin/ManageClubs'; 
 import ManageEvents from './admin/ManageEvents';
-import Settings from './admin/Settings'; // Placeholder
+import Settings from './admin/Settings';
 import styles from './App.module.css';
 axios.defaults.withCredentials = true;
 
@@ -43,13 +43,13 @@ function App() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/register-student" element={<StudentRegister />} />
-                <Route path="/login-student" element={<StudentLogin />} /> {/* Assuming you'll create this */}
+                <Route path="/login-student" element={<StudentLogin />} />
                 <Route path="/student/*" element={<StudentLayout />} />
                 <Route path="/register-club" element={<ClubRegister />} />
                 <Route path="/login-club" element={<ClubLogin />} />
                 <Route path="/login-admin" element={<AdminLogin />} />
                 <Route path="/admin/*" element={<AdminLayout />} />
-                <Route path="/club/*" element={<ClubLayout />} /> {/* Use a layout component for the dashboard */}
+                <Route path="/club/*" element={<ClubLayout />} /> 
             </Routes>
         </Router>
     );
@@ -57,12 +57,11 @@ function App() {
 
 function ClubLayout() {
     return (
-        <div className={styles.dashboardContainer}> {/* Apply the grid layout here */}
-            <ClubSidebar />
-            <div className={styles.mainContentArea}> {/* New div for main content with max-width */}
+        <div className={styles.dashboardContainer}> 
+            <div className={styles.mainContentArea}> 
                 <Routes>
-                    <Route path="overview" element={<ClubDashboard />} /> {/* Default dashboard view is ClubDashboard */}
-                    <Route path="events/*" element={<ClubEventsRoutes />} /> {/* Nested routes for events */}
+                    <Route path="overview" element={<ClubDashboard />} /> 
+                    <Route path="events/*" element={<ClubEventsRoutes />} /> 
                     <Route path="recruitments" element={<ClubRecruitments />} />
                     <Route path="members" element={<ClubMembers />} />
                     <Route path="profile" element={<ClubProfile />} />
@@ -91,12 +90,12 @@ function ClubEventsRoutes() {
 
 function StudentLayout() {
     return (
-        <div className={styles.dashboardContainer}> {/* Use the same container style */}
+        <div className={styles.dashboardContainer}> 
             <StudentSidebar />
             <div className={styles.mainContentArea}>
                 <Routes>
                     <Route path="dashboard" element={<StudentDashboard />} />
-                    {/* Add other student-related routes here */}
+                    
                     <Route path="clubs" element={<StudentClubsPage />} />
                     <Route path="myclubs" element={<MyClubsPage />} />
                     <Route path="joinclubs" element={<JoinClubsPage />} />
@@ -110,18 +109,17 @@ function StudentLayout() {
 
 function AdminLayout() {
     return (
-        <div className={styles.dashboardContainer}> {/* Re-use the same container layout style */}
+        <div className={styles.dashboardContainer}> 
             <AdminSidebar />
-            <div className={styles.mainContentArea}> {/* Re-use the same main content area style */}
+            <div className={styles.mainContentArea}> 
                 <Routes>
                     {/* Admin routes */}
                     <Route path="dashboard" element={<AdminDashboard />} />
                     <Route path="events" element={<ManageEvents />} />
-                    <Route path="students" element={<ManageStudents />} /> {/* Ensure ManageStudents component exists */}
-                    <Route path="clubs" element={<ManageClubs />} /> {/* Ensure ManageClubs component exists */}
-                    <Route path="settings" element={<Settings />} /> {/* Ensure Settings component exists */}
-                    {/* Add other admin routes as needed */}
-                    {/* <Route path="*" element={<NotFound />} /> */}
+                    <Route path="students" element={<ManageStudents />} />
+                    <Route path="clubs" element={<ManageClubs />} /> 
+                    <Route path="settings" element={<Settings />} />
+
                 </Routes>
             </div>
         </div>

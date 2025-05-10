@@ -25,7 +25,7 @@ const studentEventRoutes = require('./routes/studentEvents');
 connectDB();
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:3000', // Your frontend's URL
+  origin: 'http://localhost:3000', //  frontend's URL
   credentials: true,
 }));
 
@@ -58,7 +58,7 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/admins/events', adminAuthRoutes.authAdmin, adminEventRoutes);
 app.use('/api/admins/students', adminAuthRoutes.authAdmin, adminStudentRoutes);
 app.use('/api/admins/clubs', adminAuthRoutes.authAdmin, adminClubRoutes);
-app.use('/api/admins', adminAuthRoutes.router);    // Other club routes
+app.use('/api/admins', adminAuthRoutes.router);  
 app.use('/api/recruitment', recruitmentRoutes);
 
 app.use('/api/events', eventRoutes);  
