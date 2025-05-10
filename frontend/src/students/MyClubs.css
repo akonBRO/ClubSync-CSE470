@@ -1,0 +1,418 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Basic Reset and Body Styling - Keep minimal global styles */
+body {
+    margin: 0;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa; /* Light background from reference */
+    color: #343a40; /* Text color from reference */
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Scoped container for the entire My Clubs page */
+.myclubs-container {
+    width: 100%;
+     /* Adjusted max-width */
+    margin: 30px auto;
+    padding: 0 clamp(15px, 5vw, 30px); /* Responsive horizontal padding */
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Space between sections */
+    box-sizing: border-box;
+}
+
+/* Page Title - Scoped */
+.myclubs-container .page-title {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 2.5rem); /* Larger responsive font size */
+    font-weight: 700; /* Bolder font weight */
+    color: #673AB7; /* Darker purple for title */
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between icon and text */
+    padding-bottom: 15px;
+    border-bottom: 3px solid #9C27B0; /* Primary purple underline */
+}
+
+/* Global Message Styles (Error) - Scoped */
+.myclubs-container .global-message {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid transparent;
+}
+
+.myclubs-container .global-message.error {
+    background-color: #f8d7da; /* Lighter red */
+    color: #721c24; /* Dark red */
+    border-color: #f5c6cb; /* Red border */
+}
+
+.myclubs-container .global-message .message-icon {
+    font-size: 1.2em;
+    flex-shrink: 0;
+}
+
+
+/* Search Form Container - Scoped */
+.myclubs-container .search-form-container {
+    margin-bottom: 30px;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border: 1px solid #dee2e6;
+}
+
+/* Search Form - Scoped */
+.myclubs-container .search-form {
+    display: flex;
+    gap: 10px; /* Space between input and button */
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+/* Input Icon Wrapper for Search Input - Scoped */
+.myclubs-container .input-icon-wrapper {
+    position: relative;
+    flex-grow: 1; /* Allow input to take available space */
+    min-width: 200px; /* Minimum width for input */
+}
+
+/* Search Input Icon - Scoped */
+.myclubs-container .input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d; /* Muted text color */
+    font-size: 1.1em;
+    pointer-events: none;
+}
+
+/* Search Input Field - Scoped */
+.myclubs-container .search-input {
+    width: 100%;
+    padding: 10px 15px 10px 40px; /* Left padding for icon */
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #343a40;
+}
+
+.myclubs-container .search-input:focus {
+    border-color: #9C27B0; /* Primary purple on focus */
+    box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.2); /* Purple focus shadow */
+    outline: none;
+}
+
+.myclubs-container .search-input:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+/* Search Button - Scoped */
+.myclubs-container .search-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #673AB7; /* Darker purple */
+    color: white;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.myclubs-container .search-button:hover:not(:disabled) {
+    background-color: #5e35b1; /* Slightly darker */
+    transform: translateY(-2px);
+}
+
+.myclubs-container .search-button:disabled {
+    background-color: #cccccc;
+    color: #7f8c8d;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Spinner Icon for Button - Scoped */
+.myclubs-container .button-icon.spinner-icon {
+    animation: spin 1s linear infinite;
+}
+
+
+/* Loading State - Scoped */
+.myclubs-container .loading-state {
+    text-align: center;
+    padding: 50px 20px;
+    font-size: 1.2em;
+    color: #6c757d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Error State - Scoped */
+.myclubs-container .error-state {
+    text-align: center;
+    padding: 50px 20px;
+    font-size: 1.2em;
+    color: #dc3545; /* Error red */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Spinner for Loading State - Scoped */
+.myclubs-container .spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #9C27B0; /* Primary purple */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* No Clubs Found Message - Scoped */
+.myclubs-container .no-clubs-found {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 1.2em;
+    color: #6c757d;
+}
+
+
+/* Clubs Grid - Scoped */
+.myclubs-container .clubs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 25px; /* Space between cards */
+}
+
+/* Club Card - Scoped */
+.myclubs-container .club-card {
+    background-color: #ffffff; /* White background */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Card shadow */
+    border: 1px solid #dee2e6;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+    overflow: hidden; /* Ensure children don't overflow rounded corners */
+}
+
+.myclubs-container .club-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); /* Hover shadow */
+}
+
+/* Card Header (Logo, Titles, ID) - Scoped */
+.myclubs-container .club-card .card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    background-color: #f8f9fa; /* Light background */
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Club Logo in Card - Scoped */
+.myclubs-container .club-card .club-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #9C27B0; /* Primary purple border */
+    flex-shrink: 0;
+}
+
+/* Club Titles and ID Container - Scoped */
+.myclubs-container .club-card .club-titles {
+    flex-grow: 1;
+}
+
+/* Club Name in Card Header - Scoped */
+.myclubs-container .club-card .club-name {
+    margin: 0 0 5px 0;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #343a40; /* Text color */
+}
+
+/* Club ID in Card Header - Scoped */
+.myclubs-container .club-card .club-id {
+    display: inline-block;
+    padding: 3px 8px;
+    background-color: #e9ecef; /* Light grey background */
+    border-radius: 12px;
+    font-size: 0.8em; /* Adjusted font size */
+    color: #6c757d; /* Muted text color */
+    font-weight: 500;
+}
+
+
+/* Card Body (Details) - Scoped */
+.myclubs-container .club-card .card-body {
+    padding: 15px 20px;
+    flex-grow: 1; /* Allows body to take space */
+}
+
+/* Club Details Paragraphs - Scoped */
+.myclubs-container .club-card .card-body p {
+    margin: 8px 0;
+    color: #343a40; /* Text color */
+    font-size: 0.95em;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+/* Strong tags (Labels) in Details - Scoped */
+.myclubs-container .club-card .card-body p strong {
+    color: #6c757d; /* Muted text color for labels */
+    font-weight: 500;
+}
+
+/* Icons in Details - Scoped */
+.myclubs-container .club-card .card-body .icon {
+    color: #9C27B0; /* Primary purple for icons */
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+/* Club Description Section - Scoped */
+.myclubs-container .club-card .club-description {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed #dee2e6;
+}
+
+/* Club Description Title - Scoped */
+.myclubs-container .club-card .club-description h4 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #343a40;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Club Description Text - Scoped */
+.myclubs-container .club-card .club-description p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+
+/* Card Footer (Contact Button) - Scoped */
+.myclubs-container .club-card .card-footer {
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    text-align: center; /* Center the button */
+}
+
+/* Contact Button - Scoped */
+.myclubs-container .club-card .contact-btn {
+    display: inline-flex; /* Use inline-flex for icon alignment */
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    padding: 10px 20px; /* Adjusted padding */
+    background-color: #E91E63; /* Pink/Magenta for contact */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px; /* Border radius from reference */
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.myclubs-container .club-card .contact-btn:hover {
+    background-color: #D81B60; /* Darker pink/magenta */
+    transform: translateY(-2px);
+}
+
+
+/* Responsive Adjustments - Scoped */
+@media (max-width: 768px) {
+    .myclubs-container {
+        padding: 0 15px;
+        margin-top: 20px;
+        gap: 20px;
+    }
+
+    .myclubs-container .page-title {
+        font-size: 1.8rem;
+        gap: 10px;
+    }
+
+    .myclubs-container .search-form-container {
+        padding: 15px;
+    }
+
+    .myclubs-container .search-form {
+        flex-direction: column; /* Stack input and button */
+        gap: 15px;
+    }
+
+    .myclubs-container .input-icon-wrapper {
+        min-width: auto; /* Remove min-width */
+    }
+
+    .myclubs-container .search-button {
+        width: 100%; /* Full width button */
+        justify-content: center; /* Center text and icon */
+    }
+
+    .myclubs-container .clubs-grid {
+        grid-template-columns: 1fr; /* Single column */
+        gap: 20px;
+    }
+
+    .myclubs-container .club-card .card-header {
+        flex-direction: column; /* Stack logo and titles */
+        align-items: center;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .myclubs-container .club-card .club-titles {
+        text-align: center;
+    }
+
+    .myclubs-container .club-card .card-body p {
+        flex-direction: column; /* Stack label and value */
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .myclubs-container .club-card .card-body p strong {
+        min-width: auto; /* Remove min-width */
+    }
+}
