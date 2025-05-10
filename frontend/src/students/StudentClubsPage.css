@@ -1,0 +1,512 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Basic Reset and Body Styling - Keep minimal global styles */
+body {
+    margin: 0;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa; /* Light background */
+    color: #343a40; /* Text color */
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Scoped container for the entire Student Clubs page */
+.student-clubs-page {
+    width: 100%;
+    /* Wider max-width for a grid layout */
+    margin: 30px auto;
+    padding: 0 clamp(15px, 5vw, 30px); /* Responsive horizontal padding */
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Space between sections */
+    box-sizing: border-box;
+}
+
+/* Page Title - Scoped */
+.student-clubs-page .page-title {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 2.5rem); /* Larger responsive font size */
+    font-weight: 700; /* Bolder font weight */
+    color: #673AB7; /* Darker purple for title */
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between icon and text */
+    padding-bottom: 15px;
+    border-bottom: 3px solid #9C27B0; /* Primary purple underline */
+}
+
+/* Controls Area (Search and Buttons) - Scoped */
+.student-clubs-page .controls-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 20px; /* Space between search and buttons */
+    padding: 15px 20px;
+    background-color: #ffffff; /* White background */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border: 1px solid #dee2e6;
+}
+
+/* Search Container - Scoped */
+.student-clubs-page .search-container {
+    position: relative;
+    flex-grow: 1; /* Allow search to take space */
+    max-width: 400px; /* Max width for search */
+}
+
+.student-clubs-page .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d; /* Muted text color */
+    font-size: 1.1em;
+}
+
+.student-clubs-page .search-box {
+    width: 100%;
+    padding: 10px 15px 10px 40px; /* Left padding for icon */
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+.student-clubs-page .search-box:focus {
+    border-color: #9C27B0; /* Primary purple on focus */
+    box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.2); /* Purple focus shadow */
+    outline: none;
+}
+
+
+/* Action Buttons Container - Scoped */
+.student-clubs-page .action-buttons {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    justify-content: flex-end; /* Align buttons to the right */
+}
+
+/* Action Buttons (My Clubs, Join Clubs) - Scoped */
+.student-clubs-page .action-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.student-clubs-page .my-clubs-button {
+    background-color: #673AB7; /* Darker purple */
+    color: white;
+}
+
+.student-clubs-page .my-clubs-button:hover {
+    background-color: #5e35b1; /* Slightly darker */
+    transform: translateY(-2px);
+}
+
+.student-clubs-page .join-clubs-button {
+    background-color: #E91E63; /* Pink/Magenta */
+    color: white;
+}
+
+.student-clubs-page .join-clubs-button:hover {
+    background-color: #D81B60; /* Darker pink/magenta */
+    transform: translateY(-2px);
+}
+
+
+/* No Clubs Found Message - Scoped */
+.student-clubs-page .no-clubs-found {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 1.2em;
+    color: #6c757d; /* Muted text color */
+}
+
+
+/* Club Grid - Scoped */
+.student-clubs-page .club-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 25px; /* Space between cards */
+}
+
+/* Club Card - Scoped */
+.student-clubs-page .club-card {
+  
+    background-color: #ffffff; /* White background */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Card shadow */
+    border: 1px solid #dee2e6;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+    overflow: hidden; /* Ensure children don't overflow rounded corners */
+    cursor: pointer; /* Indicate clickable */
+}
+
+.student-clubs-page .club-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); /* Hover shadow */
+}
+
+/* Card Header (Logo and Titles) - Scoped */
+.student-clubs-page .club-card .card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Club Logo in Card - Scoped */
+.student-clubs-page .club-card .club-logo {
+    width: 60px; /* Smaller logo in card */
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%; /* Circular logo */
+    border: 3px solid #9C27B0; /* Primary purple border */
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Club Titles in Card Header - Scoped */
+.student-clubs-page .club-card .club-titles {
+    flex-grow: 1;
+}
+
+.student-clubs-page .club-card .club-name {
+    margin: 0 0 5px 0;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #343a40; /* Text color */
+}
+
+.student-clubs-page .club-card .club-shortname {
+    margin: 0;
+    font-size: 0.9em;
+    color: #6c757d; /* Muted text color */
+}
+
+
+/* Card Body (Details) - Scoped */
+.student-clubs-page .club-card .card-body {
+    padding: 15px 20px;
+    flex-grow: 1; /* Allows body to take space */
+}
+
+.student-clubs-page .club-card .card-body p {
+    margin: 8px 0;
+    color: #343a40; /* Text color */
+    font-size: 0.95em;
+    display: flex;
+    align-items: flex-start; /* Align items to the start */
+    gap: 8px;
+}
+
+.student-clubs-page .club-card .card-body p strong {
+    color: #6c757d; /* Muted text color for labels */
+    font-weight: 500;
+}
+
+.student-clubs-page .club-card .card-body .icon {
+    color: #9C27B0; /* Primary purple for icons */
+    flex-shrink: 0; /* Prevent icon from shrinking */
+    margin-top: 3px; /* Adjust icon alignment */
+}
+
+.student-clubs-page .club-card .club-description-snippet {
+    font-style: italic;
+    color: #6c757d; /* Muted text color */
+    font-size: 0.9em;
+    margin-top: 15px;
+}
+
+
+/* Card Footer (Details Button) - Scoped */
+.student-clubs-page .club-card .card-footer {
+    padding: 10px 20px; /* Adjusted padding */
+    border-top: 1px solid #dee2e6;
+    background-color: #f8f9fa; /* Light background */
+    text-align: right; /* Align button to the right */
+}
+
+/* Details Button in Card - Scoped */
+.student-clubs-page .club-card .details-button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #9C27B0; /* Primary purple */
+    color: white;
+    font-size: 0.9em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.student-clubs-page .club-card .details-button:hover {
+    background-color: #673AB7; /* Darker purple */
+    transform: translateY(-2px);
+}
+
+
+/* Loading State - Scoped */
+.student-clubs-page .loading-state {
+    text-align: center;
+    padding: 50px 20px;
+    font-size: 1.2em;
+    color: #6c757d;
+}
+
+/* Error State - Scoped */
+.student-clubs-page .error-state {
+    text-align: center;
+    padding: 50px 20px;
+    font-size: 1.2em;
+    color: #dc3545; /* Error red */
+}
+
+/* Spinner - Scoped */
+.student-clubs-page .spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #9C27B0; /* Primary purple */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/* --- Modal Styles - Scoped --- */
+.student-clubs-page .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Ensure it's above other content */
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.student-clubs-page .modal-content {
+    background-color: #ffffff; /* White background */
+    padding: 30px;
+    width: 90%; /* Responsive width */
+    max-width: 600px; /* Max width */
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    position: relative;
+    max-height: 85vh; /* Max height */
+    overflow-y: auto; /* Scrollable content */
+    transform: scale(0.95);
+    opacity: 0;
+    animation: slideInUp 0.4s forwards 0.1s; /* Slide in after fade */
+}
+
+@keyframes slideInUp {
+    to { transform: scale(1); opacity: 1; }
+}
+
+.student-clubs-page .modal-close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem; /* Icon size */
+    cursor: pointer;
+    color: #aaa;
+    line-height: 1;
+    padding: 5px;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.student-clubs-page .modal-close-button:hover {
+    color: #dc3545; /* Error red */
+    transform: rotate(90deg);
+}
+
+/* Modal Header (Logo and Titles) - Scoped */
+.student-clubs-page .modal-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Club Logo in Modal - Scoped */
+.student-clubs-page .modal-club-logo {
+    width: 80px; /* Larger logo in modal */
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #9C27B0; /* Primary purple border */
+    flex-shrink: 0;
+}
+
+/* Club Titles in Modal Header - Scoped */
+.student-clubs-page .modal-titles {
+    flex-grow: 1;
+}
+
+.student-clubs-page .modal-club-name {
+    margin: 0 0 8px 0;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #343a40; /* Text color */
+}
+
+.student-clubs-page .modal-club-shortname {
+    margin: 0;
+    font-size: 1.1em;
+    color: #6c757d; /* Muted text color */
+}
+
+
+/* Modal Body (Details) - Scoped */
+.student-clubs-page .modal-body {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 20px;
+}
+
+.student-clubs-page .modal-body p {
+    margin: 10px 0; /* More space between paragraphs */
+    color: #343a40; /* Text color */
+    font-size: 1em;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px; /* More space between icon/label and text */
+}
+
+.student-clubs-page .modal-body p strong {
+    color: #6c757d; /* Muted text color for labels */
+    font-weight: 500;
+    min-width: 100px; /* Give labels a minimum width for alignment */
+    flex-shrink: 0; /* Prevent label from shrinking */
+}
+
+.student-clubs-page .modal-body .icon {
+    color: #9C27B0; /* Primary purple for icons */
+    flex-shrink: 0;
+    margin-top: 4px; /* Adjust icon alignment */
+}
+
+.student-clubs-page .modal-body a {
+    color: #673AB7; /* Darker purple for links */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.student-clubs-page .modal-body a:hover {
+    color: #9C27B0; /* Primary purple on hover */
+    text-decoration: underline;
+}
+
+
+/* Responsive Adjustments - Scoped */
+@media (max-width: 768px) {
+    .student-clubs-page {
+        padding: 0 15px; /* Adjust padding */
+        margin-top: 20px; /* Adjust top margin */
+        gap: 20px;
+    }
+
+    .student-clubs-page .page-title {
+        font-size: 1.8rem; /* Adjust title size */
+        gap: 10px;
+    }
+
+     .student-clubs-page .controls-area {
+        flex-direction: column; /* Stack search and buttons */
+        align-items: stretch; /* Stretch items */
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .student-clubs-page .search-container {
+        max-width: none; /* Remove max-width */
+    }
+
+    .student-clubs-page .action-buttons {
+        flex-direction: column; /* Stack buttons */
+        gap: 8px;
+        align-items: stretch;
+    }
+
+    .student-clubs-page .action-button {
+        width: 100%; /* Full width buttons */
+        justify-content: center; /* Center text and icon */
+    }
+
+    .student-clubs-page .club-grid {
+        grid-template-columns: 1fr; /* Single column */
+        gap: 20px;
+    }
+
+    .student-clubs-page .club-card .card-header {
+        flex-direction: column; /* Stack logo and titles */
+        align-items: center;
+        gap: 10px;
+    }
+
+    .student-clubs-page .club-card .club-titles {
+        text-align: center;
+    }
+
+    .student-clubs-page .modal-content {
+        padding: 20px;
+        width: 95%;
+    }
+
+    .student-clubs-page .modal-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .student-clubs-page .modal-titles {
+        text-align: center;
+    }
+
+    .student-clubs-page .modal-body p {
+        flex-direction: column; /* Stack label and value */
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+     .student-clubs-page .modal-body p strong {
+         min-width: auto; /* Remove min-width */
+     }
+}
