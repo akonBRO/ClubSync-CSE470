@@ -1,0 +1,418 @@
+/* frontend/src/pages/EvaluateApplicants.module.css */
+
+/* --- Base & Variables --- */
+:root {
+  --pprimary-color: #4a90e2; /* A modern blue */
+  --pprimary-hover-color: #357abd;
+  --psecondary-color: #f4f7fa; /* Light background */
+  --pcard-background: #ffffff;
+  --ptext-primary: #333;
+  --ptext-secondary: #666;
+  --ptext-light: #999;
+  --pborder-color: #e1e8ed;
+  --psuccess-color: #28a745;
+  --pwarning-color: #ffc107;
+  --pdanger-color: #dc3545;
+  --pshadow-light: rgba(0, 0, 0, 0.05);
+  --pshadow-medium: rgba(0, 0, 0, 0.1);
+  --pborder-radius: 8px;
+  --ptransition-speed: 0.3s;
+}
+
+.evaluatePage {
+  padding: 30px;
+  background-color: var(--psecondary-color);
+  min-height: 100vh; /* Ensure it takes full height */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- Header --- */
+.header {
+  background: linear-gradient(135deg, var(--pprimary-color), #6aa9e9);
+  color: white;
+  padding: 25px 30px;
+  margin: -30px -30px 30px -30px; /* Extend to page edges */
+  box-shadow: 0 4px 10px var(--pshadow-medium);
+  border-bottom-left-radius: var(--pborder-radius);
+  border-bottom-right-radius: var(--pborder-radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping */
+  gap: 15px;
+}
+
+.headerTitle {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.headerTitle h1 {
+  margin: 0;
+  font-size: 1.8em;
+  font-weight: 600;
+}
+
+.headerTitle span {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 3px 8px;
+  pborder-radius: 4px;
+  font-size: 0.9em;
+}
+
+.clubInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1em;
+}
+
+/* --- Controls (Search & Stats) --- */
+.controlsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.searchContainer {
+  position: relative;
+  flex-grow: 1; /* Allow search to take available space */
+  min-width: 250px; /* Minimum width */
+  max-width: 400px; /* Maximum width */
+}
+
+.searchIcon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ptext-light);
+}
+
+.searchBox {
+  width: 100%;
+  padding: 12px 15px 12px 40px; /* Space for icon */
+  border: 1px solid var(--pborder-color);
+  pborder-radius: var(--pborder-radius);
+  font-size: 1em;
+  transition: pborder-color var(--ptransition-speed), box-shadow var(--ptransition-speed);
+  box-sizing: border-box;
+}
+
+.searchBox:focus {
+  outline: none;
+  pborder-color: var(--pprimary-color);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+.statsContainer {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap; /* Allow stats to wrap */
+  align-items: center;
+  color: var(--ptext-secondary);
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--pcard-background);
+  padding: 5px 10px;
+  pborder-radius: 4px;
+  box-shadow: 0 1px 3px var(--pshadow-light);
+  font-size: 0.9em;
+}
+
+.statItem svg {
+  margin-right: 3px;
+}
+.statItem strong {
+  color: var(--ptext-primary);
+}
+
+/* --- Applicants Grid --- */
+.applicantsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Responsive grid */
+  gap: 25px;
+}
+
+/* --- Applicant Card --- */
+.applicantCard {
+  background-color: var(--pcard-background);
+  pborder-radius: var(--pborder-radius);
+  border: 1px solid var(--pborder-color);
+  box-shadow: 0 2px 5px var(--pshadow-light);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between sections */
+  transition: transform var(--ptransition-speed) ease, box-shadow var(--ptransition-speed) ease;
+}
+
+.applicantCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px var(--pshadow-medium);
+}
+
+.cardUpdating {
+  opacity: 0.7;
+  pointer-events: none; /* Prevent interaction while updating */
+  position: relative; /* For potential overlay */
+}
+/* Optional: add overlay/spinner inside updating card
+.cardUpdating::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+  pborder-radius: var(--pborder-radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+} */
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px dashed var(--pborder-color);
+  padding-bottom: 10px;
+}
+
+.applicantName {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: var(--pprimary-color);
+  margin: 0;
+}
+
+.applicantId {
+  font-size: 0.85em;
+  color: var(--ptext-light);
+  background-color: var(--psecondary-color);
+  padding: 2px 6px;
+  pborder-radius: 3px;
+}
+
+.cardBody p {
+  margin: 5px 0;
+  color: var(--ptext-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95em;
+}
+
+.infoIcon {
+  color: var(--pprimary-color);
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.cardStatus {
+  margin-top: auto; /* Push status and controls down if card heights vary */
+  padding-top: 10px;
+  border-top: 1px dashed var(--pborder-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9em;
+}
+.cardStatus strong {
+  color: var(--ptext-primary);
+}
+
+/* --- Status Badges --- */
+.statusBadge {
+  padding: 4px 10px;
+  pborder-radius: 12px; /* Pill shape */
+  font-size: 0.85em;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  text-transform: capitalize;
+}
+
+.statusPending {
+  background-color: #fff3cd; /* Lighter yellow background */
+  color: #856404; /* Dark yellow text */
+}
+
+.statusApproved {
+  background-color: #d4edda; /* Lighter green background */
+  color: #155724; /* Dark green text */
+}
+
+.statusRejected {
+  background-color: #f8d7da; /* Lighter red background */
+  color: #721c24; /* Dark red text */
+}
+
+
+/* --- Card Controls --- */
+.cardControls {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap; /* Allow wrapping on small cards/screens */
+}
+
+.statusSelect {
+  padding: 10px 12px;
+  border: 1px solid var(--pborder-color);
+  pborder-radius: var(--pborder-radius);
+  background-color: #fff;
+  font-size: 0.9em;
+  flex-grow: 1; /* Take available space */
+  min-width: 130px;
+  cursor: pointer;
+  transition: pborder-color var(--ptransition-speed);
+}
+.statusSelect:focus {
+  outline: none;
+  pborder-color: var(--pprimary-color);
+}
+.statusSelect:disabled {
+  background-color: var(--psecondary-color);
+  cursor: not-allowed;
+}
+
+.submitButton {
+  padding: 10px 15px;
+  border: none;
+  pborder-radius: var(--pborder-radius);
+  background-color: var(--pprimary-color);
+  color: white;
+  font-size: 0.9em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--ptransition-speed), box-shadow var(--ptransition-speed);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: var(--pprimary-hover-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.submitButton:disabled {
+  background-color: #bdc3c7; /* Grey when disabled */
+  color: #7f8c8d;
+  cursor: not-allowed;
+}
+
+.buttonSpinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* --- Loading, Error, Empty States --- */
+.loadingContainer,
+.errorContainer,
+.noApplicants {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--ptext-secondary);
+  min-height: 300px; /* Give it some space */
+}
+
+.spinner {
+  font-size: 3em;
+  color: var(--pprimary-color);
+  animation: spin 1.5s linear infinite;
+  margin-bottom: 20px;
+}
+
+.errorIcon {
+    font-size: 3em;
+    color: var(--pdanger-color);
+    margin-bottom: 20px;
+}
+
+.errorContainer p, .loadingContainer p, .noApplicants p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.retryButton {
+  padding: 10px 20px;
+  border: none;
+  pborder-radius: var(--pborder-radius);
+  background-color: var(--pprimary-color);
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color var(--ptransition-speed);
+}
+.retryButton:hover {
+   background-color: var(--pprimary-hover-color);
+}
+
+.inlineError {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px 15px;
+    pborder-radius: var(--pborder-radius);
+    margin-top: 10px; /* Space from header/controls */
+    margin-bottom: 20px;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #f5c6cb;
+}
+
+/* Center 'No Applicants' message if it's the only thing in the grid */
+.applicantsGrid:has(.noApplicants) {
+    display: flex; /* Override grid */
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .controlsContainer {
+    flex-direction: column;
+    align-items: stretch; /* Make search full width */
+  }
+  .searchContainer {
+     max-width: none; /* Remove max width on small screens */
+  }
+  .statsContainer {
+     justify-content: space-around; /* Distribute stats nicely */
+     gap: 10px;
+  }
+  .evaluatePage {
+     padding: 20px;
+  }
+  .header {
+     margin: -20px -20px 20px -20px; /* Adjust negative margins */
+     padding: 20px;
+  }
+   .applicantsGrid {
+    grid-template-columns: 1fr; /* Stack cards vertically */
+    gap: 20px;
+  }
+}
