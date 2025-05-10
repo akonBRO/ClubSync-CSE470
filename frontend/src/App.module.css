@@ -1,0 +1,17 @@
+/* App.module.css */
+.dashboardContainer {
+    display: grid;
+    grid-template-columns: 280px 1fr; /* Adjust sidebar width */
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif; /* Modern, clean font - ensure it's imported */
+    color: #4B5563; /* Dark gray text */
+    background-color: #F0F2F7; /* Light gray background */
+    overflow: hidden; /* To contain potential floating elements */
+}
+
+.mainContentArea {
+    flex-grow: 1;
+    padding: 20px;
+    max-width: 1800px; /* Apply the max-width here */
+    margin: 5 auto; /* Center the content */
+}

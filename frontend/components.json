@@ -1,0 +1,13 @@
+{
+    "style": "default",
+    "tailwind": {
+      "config": "tailwind.config.js",
+      "format": "cjs",
+      "prefix": ""
+    },
+    "aliases": {
+      "components": "@/components",
+      "utils": "@/lib/utils"
+    }
+  }
+  
