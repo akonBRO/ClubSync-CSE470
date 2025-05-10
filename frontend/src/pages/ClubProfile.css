@@ -1,0 +1,448 @@
+/* Basic Reset and Body Styling - Keep minimal global styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Using Segoe UI as in reference */
+    background-color: #f4f7fa; /* Light background from reference */
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh; /* Ensure it takes full height */
+    /* Removed flex properties from body to avoid affecting other pages */
+}
+
+/* Scoped container for the entire Club Profile page */
+.club-profile-container {
+    width: 100%;
+     /* Max width for content */
+    margin: 30px auto; /* Center the container with top/bottom margin */
+    padding: 0 30px; /* Horizontal padding from reference */
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Space between title/header and card */
+    box-sizing: border-box; /* Include padding in calculation */
+}
+
+/* Page Header (for title) - Scoped */
+.club-profile-container .page-header {
+    background: linear-gradient(135deg, #4a90e2, #6aa9e9); /* Gradient from reference */
+    color: white;
+    padding: 25px 30px; /* Padding from reference */
+    /* Adjust margin to align with the container padding */
+    margin: -30px -3px 3px -3px; /* Extend to container edges */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow from reference */
+    border-top-left-radius: 8px; /* Border radius from reference */
+    border-top-right-radius: 8px;
+    display: flex;
+    align-items: center;
+}
+
+/* Page Title - Scoped */
+.club-profile-container .page-title {
+    margin: 0; /* Remove default margin */
+    font-size: 2em; /* Font size from reference */
+    font-weight: 600; /* Font weight from reference */
+    color: white; /* Title color */
+}
+
+
+/* Profile Card Container - Scoped */
+.club-profile-container .profile-card {
+    padding: 30px;
+    background-color: #ffffff; /* White background from reference */
+    border-radius: 8px; /* Rounded corners from reference */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow from reference */
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Space between sections */
+    border: 1px solid #e1e8ed; /* Border from reference */
+}
+
+/* Loading, Error States - Scoped */
+.club-profile-container .profile-card.loading-state,
+.club-profile-container .profile-card.error-state {
+    text-align: center;
+    padding: 60px 20px;
+    font-size: 1.2em;
+    color: #666; /* Text color from reference */
+    min-height: 300px; /* Give some minimum height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none; /* Remove card shadow for these states */
+    border: none; /* Remove card border */
+    background-color: transparent; /* Transparent background */
+}
+
+/* Spinner - Scoped */
+.club-profile-container .spinner {
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #4a90e2; /* Blue spinner from reference */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Message Styles - Scoped */
+.club-profile-container .profile-message {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    opacity: 1; /* Ensure visibility */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.club-profile-container .profile-message.success {
+    background-color: #d4edda; /* Lighter green */
+    color: #155724; /* Dark green */
+    border: 1px solid #c3e6cb; /* Green border */
+}
+
+.club-profile-container .profile-message.error {
+    background-color: #f8d7da; /* Lighter red */
+    color: #721c24; /* Dark red */
+    border: 1px solid #f5c6cb; /* Red border */
+}
+
+
+/* Header Section (inside the card) - Scoped */
+.club-profile-container .profile-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e1e8ed; /* Separator line from reference */
+}
+
+/* Logo Section - Scoped */
+.club-profile-container .logo-section {
+    position: relative;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Club Logo - Scoped */
+.club-profile-container .club-logo {
+    width: 130px; /* Slightly larger logo */
+    height: 130px;
+    border-radius: 50%; /* Make logo circular */
+    object-fit: cover; /* Ensure image covers the area */
+    border: 3px solid #4a90e2; /* Accent border from reference */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow from reference */
+}
+
+/* Logo Upload Button - Scoped */
+.club-profile-container .logo-upload {
+    position: absolute;
+    bottom: 5px; /* Adjust position */
+    right: 5px; /* Adjust position */
+    background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
+    color: white;
+    border-radius: 50%;
+    width: 35px; /* Button size */
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.club-profile-container .logo-upload:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1); /* Slight scale effect */
+}
+
+/* Hide default file input - Scoped */
+.club-profile-container .logo-upload-input {
+    display: none;
+}
+
+/* Logo Upload Label - Scoped */
+.club-profile-container .logo-upload-label {
+    cursor: pointer;
+    font-size: 1.1em; /* Icon size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Header Info - Scoped */
+.club-profile-container .header-info {
+    flex-grow: 1; /* Take up remaining space */
+}
+
+/* Club Name - Scoped */
+.club-profile-container .club-name {
+    margin: 0 0 10px 0;
+    font-size: 2.2em; /* Slightly larger name */
+    color: #333; /* Primary text color */
+    font-weight: 600; /* Bold font weight */
+}
+
+/* Club Short Name - Scoped */
+.club-profile-container .club-shortname {
+    margin: 0;
+    color: #666; /* Secondary text color */
+    font-size: 1.1em; /* Slightly larger short name */
+    display: flex;
+    align-items: center;
+}
+
+
+/* Profile Sections Grid - Scoped */
+.club-profile-container .profile-sections {
+    display: grid; /* Use grid for layout */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Responsive columns, slightly wider min */
+    gap: 25px; /* Space between grid items from reference */
+}
+
+/* Individual Profile Section - Scoped */
+.club-profile-container .profile-section {
+    background-color: #ffffff; /* White background */
+    padding: 20px; /* Padding from reference */
+    border-radius: 8px; /* Border radius from reference */
+    border: 1px solid #e1e8ed; /* Border from reference */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Subtle shadow from reference */
+}
+
+/* Section Title - Scoped */
+.club-profile-container .section-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.3em; /* Font size */
+    color: #333; /* Primary text color */
+    border-bottom: 1px dashed #e1e8ed; /* Dashed underline from reference */
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    font-weight: 600; /* Bold font weight */
+}
+
+.club-profile-container .section-title .icon {
+    margin-right: 10px;
+    color: #4a90e2; /* Primary blue color */
+}
+
+/* Form Groups - Scoped */
+.club-profile-container .form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Stack label and input */
+}
+
+/* Form Label - Scoped */
+.club-profile-container .form-group label {
+    font-weight: 600; /* Bold font weight */
+    margin-bottom: 8px;
+    color: #666; /* Secondary text color */
+    display: flex;
+    align-items: center;
+    font-size: 0.95em; /* Slightly smaller label font */
+}
+
+.club-profile-container .form-group label .icon {
+    margin-right: 8px;
+    color: #4a90e2; /* Primary blue color */
+}
+
+/* Input and Textarea - Scoped */
+.club-profile-container .profile-input,
+.club-profile-container .profile-textarea {
+    width: 100%;
+    padding: 10px 12px; /* Padding from reference */
+    border: 1px solid #e1e8ed; /* Border from reference */
+    border-radius: 8px; /* Border radius from reference */
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transition from reference */
+    background-color: #fff; /* Ensure white background */
+    color: #333; /* Primary text color */
+}
+
+.club-profile-container .profile-input:focus,
+.club-profile-container .profile-textarea:focus {
+    border-color: #4a90e2; /* Primary blue on focus */
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2); /* Focus shadow from reference */
+    outline: none;
+}
+
+.club-profile-container .profile-input:disabled,
+.club-profile-container .profile-textarea:disabled {
+    background-color: #f4f7fa; /* Light background from reference */
+    color: #999; /* Light text color */
+    cursor: not-allowed;
+}
+
+/* Textarea Specific - Scoped */
+.club-profile-container .profile-textarea {
+    resize: vertical; /* Allow vertical resizing */
+}
+
+
+/* Action Buttons Container - Scoped */
+.club-profile-container .profile-actions {
+    text-align: right; /* Align buttons to the right */
+    margin-top: 20px;
+    display: flex; /* Use flexbox for button alignment */
+    justify-content: flex-end; /* Align items to the end */
+    gap: 10px; /* Space between buttons from reference */
+}
+
+/* Profile Buttons - Scoped */
+.club-profile-container .profile-button {
+    padding: 10px 15px; /* Padding from reference */
+    border: none;
+    border-radius: 8px; /* Border radius from reference */
+    cursor: pointer;
+    font-size: 0.9em; /* Font size from reference */
+    font-weight: 500; /* Font weight from reference */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.1s ease; /* Transitions from reference */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* Center text and icon */
+    min-width: 120px; /* Minimum width for buttons */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.club-profile-container .profile-button .button-icon {
+    margin-right: 8px;
+}
+
+/* Edit Button - Scoped */
+.club-profile-container .edit-button {
+    background-color: #ffc107; /* Warning yellow from reference */
+    color: #333; /* Primary text color */
+}
+
+.club-profile-container .edit-button:hover:not(:disabled) {
+    background-color: #e0a800;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Shadow on hover */
+}
+
+/* Save Button - Scoped */
+.club-profile-container .save-button {
+    background-color: #28a745; /* Success green from reference */
+    color: white;
+}
+
+.club-profile-container .save-button:hover:not(:disabled) {
+    background-color: #218838;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Shadow on hover */
+}
+
+/* Cancel Button - Scoped */
+.club-profile-container .cancel-button {
+    background-color: #dc3545; /* Danger red from reference */
+    color: white;
+}
+
+.club-profile-container .cancel-button:hover:not(:disabled) {
+    background-color: #c82333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Shadow on hover */
+}
+
+/* Disabled Button - Scoped */
+.club-profile-container .profile-button:disabled {
+    background-color: #bdc3c7; /* Grey when disabled from reference */
+    color: #7f8c8d; /* Text color when disabled from reference */
+    cursor: not-allowed;
+}
+
+/* Icon Styles - Scoped */
+.club-profile-container .icon {
+    vertical-align: middle; /* Align icons nicely with text */
+}
+
+/* Spinner Icon - Scoped */
+.club-profile-container .spinner-icon {
+    animation: spin 1s linear infinite; /* Spinner animation for button */
+}
+
+
+/* Responsive Adjustments - Scoped */
+@media (max-width: 768px) {
+    /* Body padding remains global */
+
+    .club-profile-container {
+        padding: 0 15px; /* Adjust padding */
+        margin-top: 20px; /* Adjust top margin */
+    }
+
+    .club-profile-container .page-header {
+        padding: 20px 15px; /* Adjust padding */
+        margin: 0 -15px; /* Adjust negative margins */
+    }
+
+    .club-profile-container .page-title {
+        font-size: 1.5em; /* Adjust title size */
+    }
+
+    .club-profile-container .profile-card {
+        padding: 20px;
+    }
+
+    .club-profile-container .profile-header {
+        flex-direction: column; /* Stack logo and info on small screens */
+        text-align: center;
+        gap: 20px;
+    }
+
+    .club-profile-container .header-info {
+        text-align: center;
+    }
+
+    .club-profile-container .club-name {
+        font-size: 1.8em;
+    }
+
+    .club-profile-container .club-shortname {
+        font-size: 1em;
+    }
+
+    .club-profile-container .profile-sections {
+        grid-template-columns: 1fr; /* Single column layout */
+        gap: 20px; /* Adjust gap */
+    }
+
+    .club-profile-container .profile-section {
+        padding: 15px; /* Adjust padding */
+    }
+
+    .club-profile-container .section-title {
+        font-size: 1.2em;
+        justify-content: center; /* Center section titles */
+    }
+
+    .club-profile-container .profile-actions {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 10px; /* Space between stacked buttons */
+        align-items: stretch; /* Stretch buttons to full width */
+        text-align: center; /* Center text within buttons */
+    }
+
+    .club-profile-container .profile-button {
+         width: 100%; /* Full width buttons */
+         margin-left: 0; /* Remove left margin */
+         min-width: auto; /* Remove min-width */
+    }
+
+    .club-profile-container .logo-upload {
+        width: 30px; /* Smaller upload button */
+        height: 30px;
+        bottom: 0;
+        right: 0;
+    }
+
+    .club-profile-container .logo-upload-label {
+        font-size: 1em; /* Smaller icon */
+    }
+}
