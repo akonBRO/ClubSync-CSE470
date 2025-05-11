@@ -1,0 +1,327 @@
+/* src/admin/AdminDashboard.module.css */
+
+/* You can copy most styles from StudentDashboard.module.css here.
+   Modify colors slightly if you want the admin dashboard content area
+   to have a different look than the student one.
+   For this example, we'll keep them largely similar for layout consistency,
+   focusing the color change on the sidebar. */
+
+
+   .mainContent {
+    padding: 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #f4f6f8; /* Light background - keep consistent */
+}
+
+.dashboardContainer {
+    max-width: 100%;
+    margin: 0;
+    padding: 20px;
+}
+
+.header {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.greetingSection {
+    flex-grow: 1;
+    padding-left: 15px;
+}
+
+.greeting {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 3px;
+}
+
+.adminInfo { /* Changed class name from studentInfo */
+    color: #6c757d;
+    font-size: 1rem;
+}
+
+.summarySection {
+    display: flex;
+    gap: 15px;
+    padding-right: 15px;
+}
+
+.summaryCard {
+    background-color: #e9ecef; /* Keep consistent or change */
+    color: #495057; /* Keep consistent or change */
+    padding: 10px 15px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.summaryIcon {
+    font-size: 1.3rem;
+    color: #007bff; /* Example color for admin dashboard icons */
+}
+
+.summaryText {
+    display: flex;
+    flex-direction: column;
+}
+
+.summaryValue {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.summaryLabel {
+    font-size: 0.8rem;
+}
+
+.dashboardBody {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Keep consistent */
+    gap: 20px;
+}
+
+.leftSection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.rightSection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.widget {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    padding: 15px;
+}
+
+.widgetTitle {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.widgetIcon {
+    font-size: 1.2rem;
+    color: #17a2b8; /* Example color for admin widget icons */
+}
+
+.widgetList {
+    list-style: none;
+    padding: 0;
+}
+
+.widgetListItem {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+}
+
+.widgetListItem:last-child {
+    border-bottom: none;
+}
+
+.listItemTitle {
+    font-weight: 500;
+    color: #495057;
+}
+
+.listItemMeta {
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+/* .clubTagContainer - may not be needed for admin dashboard */
+/* .clubTag - may not be needed for admin dashboard */
+
+.userProfileWidget {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profileHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.profileIcon {
+    font-size: 3rem;
+    color: #28a745; /* Example color for admin profile icon */
+    border-radius: 50%;
+    background-color: #d4edda; /* Light background matching icon */
+    padding: 10px;
+    margin-bottom: 8px;
+}
+
+.profileName {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.profileDetail {
+    color: #6c757d;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.viewProfileButton {
+    background-color: #6c757d; /* Example button color */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 15px;
+    transition: background-color 0.2s ease-in-out;
+    font-size: 0.9rem;
+}
+
+.viewProfileButton:hover {
+    background-color: #5a6268;
+}
+
+.viewAllButton {
+    background-color: #007bff; /* Example button color */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 15px;
+    transition: background-color 0.2s ease-in-out;
+    font-size: 0.9rem;
+    width: fit-content;
+}
+
+.viewAllButton:hover {
+    background-color: #0056b3;
+}
+
+
+.noData {
+    color: #6c757d;
+    font-style: italic;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+/* Modern System Overview Grid */
+.metricsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.metricItem {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border-left: 4px solid;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.metricItem:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Different border colors for each metric */
+.metricItem:nth-child(1) { border-color: #4e73df; }
+.metricItem:nth-child(2) { border-color: #1cc88a; }
+.metricItem:nth-child(3) { border-color: #f6c23e; }
+.metricItem:nth-child(4) { border-color: #e74a3b; }
+
+.metricValue {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 4px;
+}
+
+.metricLabel {
+    font-size: 0.85rem;
+    color: #718096;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+/* Icon styles for metrics */
+.metricIcon {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 8px;
+    display: inline-flex;
+}
+
+/* Different icon backgrounds */
+.metricItem:nth-child(1) .metricIcon { 
+    background-color: rgba(78, 115, 223, 0.1);
+    color: #4e73df;
+}
+.metricItem:nth-child(2) .metricIcon { 
+    background-color: rgba(28, 200, 138, 0.1);
+    color: #1cc88a;
+}
+.metricItem:nth-child(3) .metricIcon { 
+    background-color: rgba(246, 194, 62, 0.1);
+    color: #f6c23e;
+}
+.metricItem:nth-child(4) .metricIcon { 
+    background-color: rgba(231, 74, 59, 0.1);
+    color: #e74a3b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .metricsGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animation for numbers */
+@keyframes countUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.metricValue {
+    animation: countUp 0.6s ease-out forwards;
+}
